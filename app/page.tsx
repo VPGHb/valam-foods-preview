@@ -234,7 +234,7 @@ export default function Home() {
       <section className="menu-section" id="menu">
         <div className="section-heading">
           <h2>Your favorites,<br />all in one place.</h2>
-          <p>Open a section, then hover or tap a dish for a short description. Prices may change.</p>
+          <p>Open a section, then hover a dish for details. Descriptions stay visible on touch screens.</p>
         </div>
         <div className="menu-jump" aria-label="Menu categories">
           {menuSections.map((section) => <a key={section.id} href={`#${section.id}`}>{section.title}</a>)}
@@ -252,13 +252,18 @@ export default function Home() {
               </summary>
               <div className="menu-items">
                 {section.items.map((item) => (
-                  <details className="menu-item" key={`${section.id}-${item.name}`}>
-                    <summary>
-                      <div><strong>{item.name}</strong>{item.detail && <span>{item.detail}</span>}</div>
+                  <div className="menu-item" tabIndex={0} key={`${section.id}-${item.name}`}>
+                    <div className="menu-item-top">
+                      <div className="menu-item-copy">
+                        <strong>{item.name}</strong>
+                        <div className="menu-copy-swap">
+                          {item.detail && <span className="menu-quantity">{item.detail}</span>}
+                          <span className="menu-description">{item.description ?? "Description demo"}</span>
+                        </div>
+                      </div>
                       <b>{item.price}</b>
-                    </summary>
-                    <div className="menu-description-wrap"><p>{item.description ?? "Description demo"}</p></div>
-                  </details>
+                    </div>
+                  </div>
                 ))}
               </div>
             </details>
