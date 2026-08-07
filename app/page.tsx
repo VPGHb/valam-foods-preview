@@ -125,6 +125,17 @@ const restaurantSchema = {
   priceRange: "$",
   servesCuisine: ["Indian", "Gujarati", "Vegetarian", "Indian Street Food"],
   menu: "#menu",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: 4.6,
+    reviewCount: 191,
+    bestRating: 5,
+    worstRating: 1,
+  },
+  openingHoursSpecification: [
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Monday", opens: "10:00", closes: "20:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], opens: "09:00", closes: "21:00" },
+  ],
   address: {
     "@type": "PostalAddress",
     streetAddress: "224 Correja Ave",
@@ -138,7 +149,7 @@ const restaurantSchema = {
     latitude: 40.577705,
     longitude: -74.32711,
   },
-  sameAs: ["https://www.instagram.com/valamfoodsusa/"],
+  sameAs: ["https://www.facebook.com/valamfoodsusa/", "https://www.instagram.com/valamfoodsusa/"],
   review: [
     {
       "@type": "Review",
@@ -193,6 +204,10 @@ export default function Home() {
             <a className="button" href="tel:+12673309984">Call to order</a>
             <a className="text-link" href="#menu">Explore the menu <span aria-hidden="true">→</span></a>
           </div>
+          <a className="rating-link" href="https://www.google.com/search?q=VALAM+FOODS+ISELIN+NJ" target="_blank" rel="noreferrer" aria-label="VALAM FOODS has a 4.6 out of 5 rating from 191 Google reviews">
+            <strong>4.6</strong>
+            <span><b>Google rating</b>191 reviews</span>
+          </a>
         </div>
         <div className="hero-art" aria-label="Illustrated VALAM FOODS favorites including pani puri, vada pav, samosas, paratha and chai">
           <div className="poster-frame poster-primary">
@@ -293,10 +308,29 @@ export default function Home() {
         <div className="visit-copy">
           <h2>Come hungry.</h2>
           <address>224 Correja Ave<br />Iselin, NJ 08830</address>
-          <p>Call for today’s hours and pickup availability.</p>
+          <div className="hours-card">
+            <h3>Business hours</h3>
+            <dl>
+              <div><dt>Friday</dt><dd>9 AM-9 PM</dd></div>
+              <div><dt>Saturday</dt><dd>9 AM-9 PM</dd></div>
+              <div><dt>Sunday</dt><dd>9 AM-9 PM</dd></div>
+              <div><dt>Monday</dt><dd>10 AM-8 PM</dd></div>
+              <div><dt>Tuesday</dt><dd>9 AM-9 PM</dd></div>
+              <div><dt>Wednesday</dt><dd>9 AM-9 PM</dd></div>
+              <div><dt>Thursday</dt><dd>9 AM-9 PM</dd></div>
+            </dl>
+            <p>Holiday hours may vary. Call to confirm.</p>
+          </div>
           <div className="visit-actions">
             <a className="button" href="https://www.google.com/maps/dir/?api=1&destination=224+Correja+Ave,+Iselin,+NJ+08830" target="_blank" rel="noreferrer">Get directions</a>
-            <a className="text-link" href="https://www.instagram.com/valamfoodsusa/" target="_blank" rel="noreferrer">Instagram <span aria-hidden="true">→</span></a>
+          </div>
+          <div className="social-follow">
+            <strong>Follow VALAM FOODS</strong>
+            <p>See fresh dishes, specials and updates from the kitchen.</p>
+            <div>
+              <a href="https://www.facebook.com/valamfoodsusa/" target="_blank" rel="noreferrer">Facebook</a>
+              <a href="https://www.instagram.com/valamfoodsusa/" target="_blank" rel="noreferrer">Instagram</a>
+            </div>
           </div>
         </div>
       </section>
@@ -321,6 +355,7 @@ export default function Home() {
         <div className="footer-contact">
           <a href="tel:+12673309984">+1 267-330-9984</a>
           <a href="https://www.google.com/maps/dir/?api=1&destination=224+Correja+Ave,+Iselin,+NJ+08830" target="_blank" rel="noreferrer">224 Correja Ave, Iselin</a>
+          <div className="footer-socials"><a href="https://www.facebook.com/valamfoodsusa/" target="_blank" rel="noreferrer">Facebook</a><a href="https://www.instagram.com/valamfoodsusa/" target="_blank" rel="noreferrer">Instagram</a></div>
           <span>Prices and availability may change. Call to confirm.</span>
         </div>
       </footer>

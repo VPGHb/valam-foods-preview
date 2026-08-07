@@ -97,6 +97,11 @@ h1, h2 { margin: 0; font-family: var(--font-display), "Arial Narrow", sans-serif
 h1 { max-width: 690px; font-size: clamp(4.2rem, 7vw, 7.4rem); text-transform: uppercase; color: var(--green-deep); }
 .hero-subtitle { max-width: 540px; margin: 26px 0 30px; color: var(--muted); font-size: clamp(1.05rem, 1.5vw, 1.3rem); line-height: 1.55; font-weight: 650; }
 .hero-actions { display: flex; align-items: center; gap: 28px; }
+.rating-link { width: fit-content; margin-top: 28px; display: inline-flex; align-items: center; gap: 12px; color: var(--green-deep); }
+.rating-link > strong { width: 58px; height: 58px; display: grid; place-items: center; border-radius: 50%; background: var(--orange); color: #251106; font-family: var(--font-display), sans-serif; font-size: 1.55rem; }
+.rating-link > span { display: grid; color: var(--muted); font-size: 0.86rem; font-weight: 800; line-height: 1.25; }
+.rating-link b { color: var(--green-deep); font-size: 0.95rem; }
+.rating-link:hover b, .rating-link:focus-visible b { color: var(--orange-deep); }
 .hero-art { position: relative; min-height: 570px; }
 .hero-art::before {
   content: "";
@@ -197,7 +202,20 @@ blockquote cite span { font-size: 0.82rem; font-weight: 750; opacity: 0.82; }
 .visit-copy { padding: 64px 50px; border-radius: 0 var(--radius) var(--radius) 0; background: var(--green-soft); display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
 .visit-copy h2 { margin-bottom: 28px; }
 .visit-copy address { margin-bottom: 18px; color: var(--green-deep); font-style: normal; font-size: 1.35rem; line-height: 1.45; font-weight: 900; }
-.visit-actions { display: flex; align-items: center; gap: 26px; margin-top: 30px; }
+.hours-card { width: 100%; max-width: 430px; margin-top: 10px; padding-top: 24px; border-top: 1px solid var(--line); }
+.hours-card h3 { margin: 0 0 12px; color: var(--green-deep); font-family: var(--font-display), sans-serif; font-size: 1.55rem; text-transform: uppercase; }
+.hours-card dl { margin: 0; display: grid; gap: 4px; }
+.hours-card dl > div { display: grid; grid-template-columns: 1fr auto; gap: 24px; padding: 4px 0; }
+.hours-card dt { font-weight: 800; }
+.hours-card dd { margin: 0; color: var(--green-deep); font-weight: 900; }
+.hours-card p { margin: 12px 0 0; color: var(--muted); font-size: 0.82rem; }
+.visit-actions { display: flex; align-items: center; gap: 26px; margin-top: 26px; }
+.social-follow { width: 100%; max-width: 430px; margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line); }
+.social-follow > strong { color: var(--green-deep); }
+.social-follow > p { margin: 5px 0 12px; color: var(--muted); font-size: 0.9rem; line-height: 1.45; }
+.social-follow > div, .footer-socials { display: flex; flex-wrap: wrap; gap: 10px 18px; }
+.social-follow a, .footer-socials a { color: var(--orange-deep); font-weight: 900; text-decoration: underline; text-underline-offset: 4px; }
+.social-follow a:hover, .social-follow a:focus-visible, .footer-socials a:hover, .footer-socials a:focus-visible { color: var(--green-deep); }
 
 footer { max-width: 1380px; margin: 0 auto; padding: 42px 5vw 48px; border-top: 1px solid var(--line); display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: center; }
 footer img { width: 105px; height: 105px; object-fit: contain; }
@@ -208,6 +226,7 @@ footer span { color: var(--muted); }
 .footer-contact { justify-items: end; font-weight: 850; }
 .footer-contact span { max-width: 320px; margin-top: 4px; text-align: right; font-size: 0.78rem; font-weight: 700; }
 .footer-contact a:hover { color: var(--orange-deep); }
+.footer-socials { justify-content: flex-end; font-size: 0.86rem; }
 .legal-links { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 10px; font-size: 0.86rem; font-weight: 850; }
 .legal-links a { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; }
 .legal-links a:hover { color: var(--orange-deep); text-decoration-color: currentColor; }
@@ -310,6 +329,7 @@ footer span { color: var(--muted); }
   footer img { width: 82px; height: 82px; }
   .footer-contact { grid-column: 1 / -1; justify-items: start; }
   .footer-contact span { text-align: left; }
+  .footer-socials { justify-content: flex-start; }
   .legal-header { height: 70px; padding: 0 20px; }
   .legal-header > a:first-child { width: 96px; height: 68px; }
   .legal-header img { width: 96px; height: 96px; }
