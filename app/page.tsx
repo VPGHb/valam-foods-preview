@@ -2,6 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { FacebookLogo, InstagramLogo, MapPin, Phone } from "@phosphor-icons/react/ssr";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const assetPath = (path: string) => `${basePath}${path}`;
+
 type MenuItem = {
   name: string;
   detail?: string;
@@ -187,7 +190,7 @@ export default function Home() {
 
       <header className="site-header">
         <a className="brand" href="#top" aria-label="VALAM FOODS home">
-          <Image src="/valam-foods-logo.png" alt="VALAM FOODS" width={152} height={152} priority />
+          <Image src={assetPath("/valam-foods-logo.png")} alt="VALAM FOODS" width={152} height={152} priority />
         </a>
         <nav aria-label="Primary navigation">
           <a href="#menu">Menu</a>
@@ -220,10 +223,10 @@ export default function Home() {
         </div>
         <div className="hero-art" aria-label="Illustrated VALAM FOODS favorites including pani puri, vada pav, samosas, paratha and chai">
           <div className="poster-frame poster-primary">
-            <Image src="/hero-street-food-v2.png" alt="Illustrated platter of pani puri, vada pav, samosas and chaat" fill sizes="(max-width: 760px) 92vw, 49vw" priority />
+            <Image src={assetPath("/hero-street-food-v2.png")} alt="Illustrated platter of pani puri, vada pav, samosas and chaat" fill sizes="(max-width: 760px) 92vw, 49vw" priority />
           </div>
           <div className="poster-frame poster-secondary">
-            <Image src="/hero-paratha-chai-v2.png" alt="Illustrated parathas, masala chai, yogurt and Indian sweets" fill sizes="(max-width: 760px) 42vw, 18vw" />
+            <Image src={assetPath("/hero-paratha-chai-v2.png")} alt="Illustrated parathas, masala chai, yogurt and Indian sweets" fill sizes="(max-width: 760px) 42vw, 18vw" />
           </div>
         </div>
       </section>
@@ -358,7 +361,7 @@ export default function Home() {
       </aside>
 
       <footer>
-        <Image src="/valam-foods-logo.png" alt="VALAM FOODS" width={170} height={170} />
+        <Image src={assetPath("/valam-foods-logo.png")} alt="VALAM FOODS" width={170} height={170} />
         <div className="footer-brand">
           <strong>VALAM FOODS ISELIN NJ</strong>
           <span>Indian street food, sweets and tiffin</span>
