@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FacebookLogo, InstagramLogo } from "@phosphor-icons/react/ssr";
+import { FacebookLogo, InstagramLogo, MapPin, Phone } from "@phosphor-icons/react/ssr";
 
 type MenuItem = {
   name: string;
@@ -234,7 +234,7 @@ export default function Home() {
       <section className="menu-section" id="menu">
         <div className="section-heading">
           <h2>Your favorites,<br />all in one place.</h2>
-          <p>Open a section, then hover a dish for details. Descriptions stay visible on touch screens.</p>
+          <p>Open a section to browse dishes, prices and simple descriptions. Details stay visible on touch screens.</p>
         </div>
         <div className="menu-jump" aria-label="Menu categories">
           {menuSections.map((section) => <a key={section.id} href={`#${section.id}`}>{section.title}</a>)}
@@ -252,7 +252,7 @@ export default function Home() {
               </summary>
               <div className="menu-items">
                 {section.items.map((item) => (
-                  <div className="menu-item" tabIndex={0} key={`${section.id}-${item.name}`}>
+                  <div className="menu-item" key={`${section.id}-${item.name}`}>
                     <div className="menu-item-top">
                       <div className="menu-item-copy">
                         <strong>{item.name}</strong>
@@ -380,8 +380,8 @@ export default function Home() {
       </footer>
 
       <div className="mobile-actions" aria-label="Quick actions">
-        <a href="tel:+12673309984">Call to order</a>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=224+Correja+Ave,+Iselin,+NJ+08830" target="_blank" rel="noreferrer">Directions</a>
+        <a href="tel:+12673309984"><Phone size={20} weight="fill" aria-hidden="true" /><span>Call</span></a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=224+Correja+Ave,+Iselin,+NJ+08830" target="_blank" rel="noreferrer"><MapPin size={21} weight="fill" aria-hidden="true" /><span>Directions</span></a>
         <a href="#socials"><InstagramLogo size={22} weight="bold" aria-hidden="true" /><span>Follow us</span></a>
       </div>
     </main>
