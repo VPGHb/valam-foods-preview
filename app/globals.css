@@ -118,6 +118,8 @@ h1 { max-width: 690px; font-size: clamp(4.2rem, 7vw, 7.4rem); text-transform: up
   box-shadow: var(--shadow);
 }
 .poster-frame img { object-fit: cover; }
+.poster-primary img { object-position: center; }
+.poster-secondary img { object-position: center; }
 .poster-primary { width: 62%; height: 88%; left: 7%; top: 3%; transform: rotate(-4deg); }
 .poster-secondary { width: 42%; height: 66%; right: 0; bottom: 0; transform: rotate(5deg); }
 
@@ -171,15 +173,19 @@ h1 { max-width: 690px; font-size: clamp(4.2rem, 7vw, 7.4rem); text-transform: up
 .catering-prices strong { text-align: right; }
 .catering-prices p { margin: 6px 0 0; line-height: 1.55; font-weight: 750; }
 
-.reviews-section { max-width: 1380px; margin: 0 auto; padding: 20px 5vw 120px; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 7vw; align-items: end; }
-.review-intro { display: grid; align-items: start; gap: 22px; }
+.reviews-section { max-width: 1380px; margin: 0 auto; padding: 20px 5vw 120px; display: grid; gap: 56px; }
+.review-intro { display: grid; align-items: start; gap: 22px; max-width: 820px; }
 .review-intro .eyebrow { margin: 0; }
-.review-quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-blockquote { min-height: 310px; margin: 0; padding: 34px; border-radius: var(--radius); display: flex; flex-direction: column; justify-content: space-between; }
-blockquote:first-child { background: var(--green); color: white; transform: rotate(-2deg); }
-blockquote:last-child { background: var(--orange-soft); color: var(--orange-deep); transform: translateY(34px) rotate(2deg); }
-blockquote p { margin: 0; font-family: var(--font-display), sans-serif; font-size: clamp(2rem, 3vw, 3.2rem); line-height: 1.06; text-transform: uppercase; }
-blockquote cite { font-style: normal; font-weight: 850; }
+.review-quotes { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
+blockquote { min-height: 285px; margin: 0; padding: 34px; border-radius: var(--radius); display: flex; flex-direction: column; justify-content: space-between; }
+blockquote:nth-child(1) { grid-column: span 7; background: var(--green); color: white; transform: rotate(-1deg); }
+blockquote:nth-child(2) { grid-column: span 5; background: var(--orange-soft); color: var(--orange-deep); transform: translateY(22px) rotate(1deg); }
+blockquote:nth-child(3) { grid-column: span 5; background: var(--green-soft); color: var(--green-deep); }
+blockquote:nth-child(4) { grid-column: span 7; background: var(--orange); color: #251106; transform: translateY(18px) rotate(-1deg); }
+blockquote p { max-width: 22ch; margin: 0; font-family: var(--font-display), sans-serif; font-size: clamp(1.8rem, 2.6vw, 3rem); line-height: 1.08; text-transform: uppercase; }
+blockquote cite { display: grid; gap: 3px; font-style: normal; }
+blockquote cite strong { font-size: 1rem; }
+blockquote cite span { font-size: 0.82rem; font-weight: 750; opacity: 0.82; }
 
 .visit-section { max-width: 1380px; margin: 0 auto 80px; padding: 0 5vw; display: grid; grid-template-columns: 1.2fr 0.8fr; }
 .map-wrap { min-height: 560px; border-radius: var(--radius) 0 0 var(--radius); overflow: hidden; background: var(--green-soft); }
@@ -231,7 +237,6 @@ footer span { color: var(--muted); }
   .hero { grid-template-columns: 1fr 1fr; gap: 20px; padding-left: 28px; padding-right: 28px; }
   .hero-art { min-height: 560px; }
   .catering-section { margin-left: 22px; margin-right: 22px; }
-  .reviews-section { grid-template-columns: 1fr; }
   .review-intro { max-width: 700px; }
   .visit-section { grid-template-columns: 1fr 1fr; }
 }
@@ -266,9 +271,10 @@ footer span { color: var(--muted); }
   .catering-section { margin: 0 12px 88px; padding: 52px 24px; grid-template-columns: 1fr; gap: 48px; }
   .catering-prices > div { align-items: flex-start; }
   .reviews-section { padding: 0 20px 100px; }
-  .review-quotes { grid-template-columns: 1fr; gap: 14px; }
+  .review-quotes { display: flex; gap: 14px; overflow-x: auto; padding: 8px 2px 20px; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .review-quotes::-webkit-scrollbar { display: none; }
   blockquote { min-height: 250px; }
-  blockquote:first-child, blockquote:last-child { transform: none; }
+  blockquote:nth-child(n) { flex: 0 0 86%; transform: none; scroll-snap-align: start; }
   .visit-section { margin-bottom: 50px; padding: 0 12px; grid-template-columns: 1fr; }
   .map-wrap { min-height: 380px; border-radius: var(--radius) var(--radius) 0 0; }
   .visit-copy { padding: 48px 24px; border-radius: 0 0 var(--radius) var(--radius); }

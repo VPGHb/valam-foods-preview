@@ -139,6 +139,28 @@ const restaurantSchema = {
     longitude: -74.32711,
   },
   sameAs: ["https://www.instagram.com/valamfoodsusa/"],
+  review: [
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Raj Bhavsar" },
+      reviewBody: "Food was very delicious and service was top notch. Food is made fresh every day, and the value cannot be beat.",
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Rohan Shah" },
+      reviewBody: "Such great vegetarian food. The tiffin variety, taste, quality and quantity are incredible.",
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Taksh Patel" },
+      reviewBody: "I traveled from Canada to try this pani puri, and it brought back lovely memories of Indian flavors and tastes.",
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Shilpa Desai" },
+      reviewBody: "Perfect tea and Papdi no Lot. The staff and owner Artiben welcomed every person with love, like family.",
+    },
+  ],
 };
 
 export default function Home() {
@@ -172,12 +194,12 @@ export default function Home() {
             <a className="text-link" href="#menu">Explore the menu <span aria-hidden="true">→</span></a>
           </div>
         </div>
-        <div className="hero-art" aria-label="VALAM FOODS menu featuring samosas, chaat and street food">
+        <div className="hero-art" aria-label="Illustrated VALAM FOODS favorites including pani puri, vada pav, samosas, paratha and chai">
           <div className="poster-frame poster-primary">
-            <Image src="/valam-menu-street-food.png" alt="Illustrated VALAM FOODS street food menu" fill sizes="(max-width: 800px) 82vw, 38vw" priority />
+            <Image src="/hero-street-food-v2.png" alt="Illustrated platter of pani puri, vada pav, samosas and chaat" fill sizes="(max-width: 800px) 82vw, 38vw" priority />
           </div>
           <div className="poster-frame poster-secondary">
-            <Image src="/valam-menu-meals.png" alt="Illustrated VALAM FOODS meals and beverages menu" fill sizes="(max-width: 800px) 45vw, 20vw" />
+            <Image src="/hero-paratha-chai-v2.png" alt="Illustrated parathas, masala chai, yogurt and Indian sweets" fill sizes="(max-width: 800px) 45vw, 20vw" />
           </div>
         </div>
       </section>
@@ -236,12 +258,20 @@ export default function Home() {
         </div>
         <div className="review-quotes">
           <blockquote>
-            <p>“Amazing food that tastes like home.”</p>
-            <cite>Public customer review</cite>
+            <p>“Food was very delicious and service was top notch. Food is made fresh every day.”</p>
+            <cite><strong>Raj Bhavsar</strong><span>Google review, 4 months ago</span></cite>
           </blockquote>
           <blockquote>
-            <p>“Perfect tea and papdi no lot.”</p>
-            <cite>Public customer review</cite>
+            <p>“Such great vegetarian food. The tiffin variety, taste and quality are incredible.”</p>
+            <cite><strong>Rohan Shah</strong><span>Google review, 4 months ago</span></cite>
+          </blockquote>
+          <blockquote>
+            <p>“I traveled from Canada to try this pani puri. It brought back lovely memories of Indian flavors.”</p>
+            <cite><strong>Taksh Patel</strong><span>Google review, 2 months ago</span></cite>
+          </blockquote>
+          <blockquote>
+            <p>“Perfect tea and Papdi no Lot. Artiben and the staff welcomed every person like family.”</p>
+            <cite><strong>Shilpa Desai</strong><span>Google review, 6 months ago</span></cite>
           </blockquote>
         </div>
       </section>
