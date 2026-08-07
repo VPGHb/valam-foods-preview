@@ -216,6 +216,10 @@ export default function Home() {
         <div className="menu-jump" aria-label="Menu categories">
           {menuSections.map((section) => <a key={section.id} href={`#${section.id}`}>{section.title}</a>)}
         </div>
+        <aside className="food-notice" aria-labelledby="food-notice-title">
+          <strong id="food-notice-title">Food allergy notice</strong>
+          <p>Ingredients and preparation methods can change, and cross-contact may occur. Please tell staff about any allergy before ordering. We cannot guarantee that any item is allergen-free.</p>
+        </aside>
         <div className="menu-groups">
           {menuSections.map((section, index) => (
             <details className={`menu-group ${section.tone}`} id={section.id} key={section.id} open={index < 2}>
@@ -274,6 +278,7 @@ export default function Home() {
             <cite><strong>Shilpa Desai</strong><span>Google review, 6 months ago</span></cite>
           </blockquote>
         </div>
+        <p className="review-disclosure">Selected excerpts from publicly posted Google reviews. Excerpts may be shortened for space. Individual experiences vary.</p>
       </section>
 
       <section className="visit-section" id="visit">
@@ -296,15 +301,27 @@ export default function Home() {
         </div>
       </section>
 
+      <aside className="demo-notice" aria-label="Demo website notice">
+        <strong>Demo website</strong>
+        <span>This preview is not yet the official VALAM FOODS website. The business must approve menu details, prices, policies and ordering information before public launch.</span>
+      </aside>
+
       <footer>
         <Image src="/valam-foods-logo.png" alt="VALAM FOODS" width={170} height={170} />
-        <div>
+        <div className="footer-brand">
           <strong>VALAM FOODS ISELIN NJ</strong>
           <span>Indian street food, sweets and tiffin</span>
+          <nav className="legal-links" aria-label="Legal and accessibility">
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/disclaimer">Disclaimers</a>
+            <a href="/accessibility">Accessibility</a>
+          </nav>
         </div>
         <div className="footer-contact">
           <a href="tel:+12673309984">+1 267-330-9984</a>
           <a href="https://www.google.com/maps/dir/?api=1&destination=224+Correja+Ave,+Iselin,+NJ+08830" target="_blank" rel="noreferrer">224 Correja Ave, Iselin</a>
+          <span>Prices and availability may change. Call to confirm.</span>
         </div>
       </footer>
 

@@ -24,6 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "VALAM FOODS | Indian Street Food in Iselin, NJ",
     description: "Vegetarian Indian street food, Gujarati favorites, sweets, chai, tiffin and catering at 224 Correja Ave in Iselin, New Jersey.",
     keywords: ["Indian food Iselin NJ", "Gujarati food Iselin", "Indian street food near me", "vegetarian restaurant Iselin", "VALAM FOODS", "pani puri Iselin", "vada pav Iselin"],
+    robots: { index: false, follow: false },
     alternates: { canonical: "/" },
     openGraph: {
       title: "VALAM FOODS | Indian Street Food in Iselin",
