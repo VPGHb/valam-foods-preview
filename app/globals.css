@@ -349,9 +349,10 @@ footer span { color: var(--muted); }
   .menu-item-top { min-height: 96px; padding: 14px 8px; gap: 12px; }
   .menu-item strong { font-size: 0.96rem; line-height: 1.25; }
   .menu-item b { font-size: 0.92rem; }
-  .menu-copy-swap { height: auto; min-height: 38px; }
+  .menu-copy-swap { height: auto; min-height: 38px; display: grid; align-content: start; gap: 3px; }
   .menu-description { position: static; display: block; width: auto; opacity: 1; transform: translateY(0); font-size: 0.8rem; line-height: 1.35; }
-  .menu-quantity { display: none; }
+  .menu-copy-swap .menu-quantity { position: static; display: block; width: auto; opacity: 1; transform: none; color: var(--orange-deep); font-size: 0.72rem; line-height: 1.2; letter-spacing: 0.025em; white-space: normal; }
+  .menu-copy-swap .menu-quantity::before { content: "Size / qty \00b7  "; font-weight: 900; }
   .catering-section { margin: 0 10px 72px; padding: 42px 20px; grid-template-columns: 1fr; gap: 32px; border-radius: 22px; }
   .catering-copy h2 { font-size: clamp(2.8rem, 13vw, 4rem); }
   .catering-copy p { margin: 18px 0 24px; font-size: 0.98rem; }
