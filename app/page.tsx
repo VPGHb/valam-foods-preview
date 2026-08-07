@@ -196,10 +196,10 @@ export default function Home() {
         </div>
         <div className="hero-art" aria-label="Illustrated VALAM FOODS favorites including pani puri, vada pav, samosas, paratha and chai">
           <div className="poster-frame poster-primary">
-            <Image src="/hero-street-food-v2.png" alt="Illustrated platter of pani puri, vada pav, samosas and chaat" fill sizes="(max-width: 800px) 82vw, 38vw" priority />
+            <Image src="/hero-street-food-v2.png" alt="Illustrated platter of pani puri, vada pav, samosas and chaat" fill sizes="(max-width: 760px) 92vw, 49vw" priority />
           </div>
           <div className="poster-frame poster-secondary">
-            <Image src="/hero-paratha-chai-v2.png" alt="Illustrated parathas, masala chai, yogurt and Indian sweets" fill sizes="(max-width: 800px) 45vw, 20vw" />
+            <Image src="/hero-paratha-chai-v2.png" alt="Illustrated parathas, masala chai, yogurt and Indian sweets" fill sizes="(max-width: 760px) 42vw, 18vw" />
           </div>
         </div>
       </section>
