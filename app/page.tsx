@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FacebookLogo, InstagramLogo } from "@phosphor-icons/react/ssr";
 
 type MenuItem = {
   name: string;
@@ -192,7 +193,13 @@ export default function Home() {
           <a href="#reviews">Reviews</a>
           <a href="#visit">Visit</a>
         </nav>
-        <a className="button button-small" href="tel:+12673309984">Call to order</a>
+        <div className="header-actions">
+          <div className="header-socials" aria-label="Follow VALAM FOODS">
+            <a className="social-icon facebook" href="https://www.facebook.com/valamfoodsusa/" target="_blank" rel="noreferrer" aria-label="Follow VALAM FOODS on Facebook"><FacebookLogo size={23} weight="fill" aria-hidden="true" /></a>
+            <a className="social-icon instagram" href="https://www.instagram.com/valamfoodsusa/" target="_blank" rel="noreferrer" aria-label="Follow VALAM FOODS on Instagram"><InstagramLogo size={23} weight="bold" aria-hidden="true" /></a>
+          </div>
+          <a className="button button-small" href="tel:+12673309984">Call to order</a>
+        </div>
       </header>
 
       <section className="hero" id="top">
@@ -324,12 +331,12 @@ export default function Home() {
           <div className="visit-actions">
             <a className="button" href="https://www.google.com/maps/dir/?api=1&destination=224+Correja+Ave,+Iselin,+NJ+08830" target="_blank" rel="noreferrer">Get directions</a>
           </div>
-          <div className="social-follow">
+          <div className="social-follow" id="socials">
             <strong>Follow VALAM FOODS</strong>
             <p>See fresh dishes, specials and updates from the kitchen.</p>
-            <div>
-              <a href="https://www.facebook.com/valamfoodsusa/" target="_blank" rel="noreferrer">Facebook</a>
-              <a href="https://www.instagram.com/valamfoodsusa/" target="_blank" rel="noreferrer">Instagram</a>
+            <div className="social-buttons">
+              <a className="social-button facebook" href="https://www.facebook.com/valamfoodsusa/" target="_blank" rel="noreferrer"><FacebookLogo size={24} weight="fill" aria-hidden="true" /><span>Follow on Facebook</span></a>
+              <a className="social-button instagram" href="https://www.instagram.com/valamfoodsusa/" target="_blank" rel="noreferrer"><InstagramLogo size={24} weight="bold" aria-hidden="true" /><span>Follow on Instagram</span></a>
             </div>
           </div>
         </div>
@@ -355,7 +362,10 @@ export default function Home() {
         <div className="footer-contact">
           <a href="tel:+12673309984">+1 267-330-9984</a>
           <a href="https://www.google.com/maps/dir/?api=1&destination=224+Correja+Ave,+Iselin,+NJ+08830" target="_blank" rel="noreferrer">224 Correja Ave, Iselin</a>
-          <div className="footer-socials"><a href="https://www.facebook.com/valamfoodsusa/" target="_blank" rel="noreferrer">Facebook</a><a href="https://www.instagram.com/valamfoodsusa/" target="_blank" rel="noreferrer">Instagram</a></div>
+          <div className="footer-socials" aria-label="VALAM FOODS social media">
+            <a className="social-icon facebook" href="https://www.facebook.com/valamfoodsusa/" target="_blank" rel="noreferrer" aria-label="VALAM FOODS on Facebook"><FacebookLogo size={22} weight="fill" aria-hidden="true" /></a>
+            <a className="social-icon instagram" href="https://www.instagram.com/valamfoodsusa/" target="_blank" rel="noreferrer" aria-label="VALAM FOODS on Instagram"><InstagramLogo size={22} weight="bold" aria-hidden="true" /></a>
+          </div>
           <span>Prices and availability may change. Call to confirm.</span>
         </div>
       </footer>
@@ -363,6 +373,7 @@ export default function Home() {
       <div className="mobile-actions" aria-label="Quick actions">
         <a href="tel:+12673309984">Call to order</a>
         <a href="https://www.google.com/maps/dir/?api=1&destination=224+Correja+Ave,+Iselin,+NJ+08830" target="_blank" rel="noreferrer">Directions</a>
+        <a href="#socials"><InstagramLogo size={22} weight="bold" aria-hidden="true" /><span>Follow us</span></a>
       </div>
     </main>
   );
