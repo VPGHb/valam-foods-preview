@@ -417,7 +417,8 @@ footer span { color: var(--muted); }
   .site-header { grid-template-columns: 78px 1fr; padding-inline: 12px; }
   .brand { width: 78px; }
   .brand img { width: 82px; height: 82px; }
-  .site-header nav { gap: 4px; font-size: 0.78rem; }
+  .site-header nav { justify-self: end; gap: 4px; font-size: 0.78rem; }
+  .site-header nav a:nth-child(4) { display: none; }
   .hero { padding-inline: 14px; }
   h1 { font-size: clamp(2.95rem, 14vw, 3.35rem); }
   .hero-art { min-height: 285px; }
