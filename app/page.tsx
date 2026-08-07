@@ -4,6 +4,7 @@ import { FacebookLogo, InstagramLogo } from "@phosphor-icons/react/ssr";
 type MenuItem = {
   name: string;
   detail?: string;
+  description?: string;
   price: string;
 };
 
@@ -22,25 +23,25 @@ const menuSections: MenuSection[] = [
     note: "Chaats, snacks and Gujarati favorites",
     tone: "green",
     items: [
-      { name: "Aloo Papadi Chaat", price: "$7.99" },
-      { name: "Bhel", price: "$7.99" },
-      { name: "Dabeli", detail: "1 pc / 2 pc", price: "$5.99 / $8.99" },
-      { name: "Dal Vada", detail: "10 pc", price: "$7.99" },
-      { name: "Khachori Chaat", price: "$6.99" },
+      { name: "Aloo Papadi Chaat", description: "Crisp papadi with potatoes, chutneys and classic chaat toppings.", price: "$7.99" },
+      { name: "Bhel", description: "A light, crunchy street-food mix tossed with chutneys and spices.", price: "$7.99" },
+      { name: "Dabeli", detail: "1 pc / 2 pc", description: "Spiced potato filling and chutneys served inside a soft pav.", price: "$5.99 / $8.99" },
+      { name: "Dal Vada", detail: "10 pc", description: "Crisp savory fritters made with seasoned lentils.", price: "$7.99" },
+      { name: "Khachori Chaat", description: "Crisp kachori finished with chutneys and chaat toppings.", price: "$6.99" },
       { name: "Khasta Kachori", price: "$2.99" },
-      { name: "Methi Gota", detail: "10 pc", price: "$7.99" },
-      { name: "Mirchi Pakoda", detail: "plate / 1 lb", price: "$9.99 / $20.99" },
-      { name: "Veggie Momos", detail: "6 pc", price: "$8.99" },
-      { name: "Pani Puri", detail: "10 pc", price: "$7.99" },
-      { name: "Unlimited Pani Puri", price: "$12.99" },
-      { name: "Papadi No Lot", detail: "S / M / L", price: "$4.99 / $8.99 / $13.99" },
+      { name: "Methi Gota", detail: "10 pc", description: "Gujarati-style fenugreek fritters with a crisp outside.", price: "$7.99" },
+      { name: "Mirchi Pakoda", detail: "plate / 1 lb", description: "Peppers coated in seasoned batter and fried until crisp.", price: "$9.99 / $20.99" },
+      { name: "Veggie Momos", detail: "6 pc", description: "Soft dumplings filled with a savory vegetable mixture.", price: "$8.99" },
+      { name: "Pani Puri", detail: "10 pc", description: "Crisp puris served with a tangy, spiced pani filling.", price: "$7.99" },
+      { name: "Unlimited Pani Puri", description: "Enjoy repeated servings of crisp puris and flavorful pani.", price: "$12.99" },
+      { name: "Papadi No Lot", detail: "S / M / L", description: "A warm Gujarati rice-flour snack with simple seasoning.", price: "$4.99 / $8.99 / $13.99" },
       { name: "Papdi Khichu", detail: "S / M / L", price: "$4.99 / $7.99 / $14.99" },
-      { name: "Pav Bhaji", price: "$12.99" },
-      { name: "Punjabi Samosa", price: "$1.25" },
-      { name: "Samosa Chaat", price: "$7.99" },
-      { name: "Sev Puri", price: "$7.99" },
-      { name: "Spring Rolls", detail: "5 pc", price: "$8.99" },
-      { name: "Vada Pav", detail: "1 pc / 2 pc", price: "$5.99 / $9.00" },
+      { name: "Pav Bhaji", description: "A spiced vegetable bhaji served with warm, toasted pav.", price: "$12.99" },
+      { name: "Punjabi Samosa", description: "Crisp pastry filled with seasoned potatoes and peas.", price: "$1.25" },
+      { name: "Samosa Chaat", description: "Samosa layered with chutneys and flavorful chaat toppings.", price: "$7.99" },
+      { name: "Sev Puri", description: "Crisp puris topped with chutneys, potatoes and crunchy sev.", price: "$7.99" },
+      { name: "Spring Rolls", detail: "5 pc", description: "Crisp rolls with a savory vegetable filling.", price: "$8.99" },
+      { name: "Vada Pav", detail: "1 pc / 2 pc", description: "A seasoned potato fritter tucked inside a soft pav.", price: "$5.99 / $9.00" },
     ],
   },
   {
@@ -49,11 +50,11 @@ const menuSections: MenuSection[] = [
     note: "Comforting plates made for any time of day",
     tone: "orange",
     items: [
-      { name: "Aloo Paratha", detail: "2 pc", price: "$9.99" },
-      { name: "Paneer Paratha", detail: "1 pc", price: "$7.99" },
-      { name: "Tiffin Service", price: "$6.99" },
-      { name: "Thali", price: "$6.99" },
-      { name: "Undhiyu", price: "$11.99" },
+      { name: "Aloo Paratha", detail: "2 pc", description: "Flatbread filled with a gently spiced potato mixture.", price: "$9.99" },
+      { name: "Paneer Paratha", detail: "1 pc", description: "Flatbread filled with seasoned paneer.", price: "$7.99" },
+      { name: "Tiffin Service", description: "A convenient homestyle meal selection for everyday dining.", price: "$6.99" },
+      { name: "Thali", description: "A balanced plate featuring a selection of homestyle favorites.", price: "$6.99" },
+      { name: "Undhiyu", description: "A traditional Gujarati mixed-vegetable dish with warming spices.", price: "$11.99" },
       { name: "Desi Vaal", price: "$25.00" },
       { name: "Bajri Na Rotla", detail: "3 pc", price: "$4.99" },
       { name: "Bajri Na Vada", detail: "1 pc", price: "$0.50" },
@@ -73,8 +74,8 @@ const menuSections: MenuSection[] = [
       { name: "Assorted Sweets", price: "$13.99" },
       { name: "Churma Ladu", detail: "2 pc", price: "$5.00" },
       { name: "Dudhi No Halwo", price: "$12.99" },
-      { name: "Gulab Jamun", detail: "1 pc", price: "$1.50" },
-      { name: "Kaju Katli", price: "$17.99" },
+      { name: "Gulab Jamun", detail: "1 pc", description: "A soft milk-based sweet soaked in fragrant syrup.", price: "$1.50" },
+      { name: "Kaju Katli", description: "A smooth cashew sweet cut into delicate diamond pieces.", price: "$17.99" },
       { name: "Ladu", detail: "1 pc", price: "$2.50" },
       { name: "Mohanthal", detail: "regular / large", price: "$10.99 / $13.99" },
       { name: "Sukhadi", detail: "1/2 lb / 1 lb", price: "$5.99 / $11.99" },
@@ -88,12 +89,12 @@ const menuSections: MenuSection[] = [
     items: [
       { name: "Bhavnagri Gathiya", price: "$7.99" },
       { name: "Crunchy Fulvadi", price: "$6.99" },
-      { name: "Fafda", detail: "1/2 lb / 1 lb", price: "$6.99 / $13.99" },
+      { name: "Fafda", detail: "1/2 lb / 1 lb", description: "Thin, crisp Gujarati snack made from seasoned gram flour.", price: "$6.99 / $13.99" },
       { name: "Fulvadi", detail: "1/2 lb", price: "$5.99" },
-      { name: "Jalebi", detail: "1/2 lb / 1 lb", price: "$4.99 / $9.99" },
+      { name: "Jalebi", detail: "1/2 lb / 1 lb", description: "Crisp spiral sweets finished in fragrant sugar syrup.", price: "$4.99 / $9.99" },
       { name: "Kachori", detail: "1/2 lb", price: "$13.99" },
-      { name: "Khaman Dhokla", price: "$3.99" },
-      { name: "Khandvi", detail: "1/2 lb", price: "$6.99" },
+      { name: "Khaman Dhokla", description: "Soft, airy Gujarati snack with a lightly savory flavor.", price: "$3.99" },
+      { name: "Khandvi", detail: "1/2 lb", description: "Tender rolled bites with a smooth, lightly seasoned finish.", price: "$6.99" },
       { name: "Masala Papadi", price: "$7.99" },
       { name: "Masala Puri", detail: "1/2 lb", price: "$5.99" },
       { name: "Tikha Gathiya", price: "$7.99" },
@@ -105,13 +106,13 @@ const menuSections: MenuSection[] = [
     note: "Chai, cool drinks and something sweet",
     tone: "green",
     items: [
-      { name: "Masala Tea", price: "$1.50" },
+      { name: "Masala Tea", description: "Warm Indian tea brewed with milk and aromatic spices.", price: "$1.50" },
       { name: "Coffee", detail: "small / regular", price: "$1.00 / $1.50" },
       { name: "Butter Milk", price: "$1.99" },
-      { name: "Mango Lassi", price: "$4.99" },
+      { name: "Mango Lassi", description: "A cool, creamy mango yogurt drink.", price: "$4.99" },
       { name: "Masala Jeera", price: "$1.99" },
       { name: "Limca or Thums Up", price: "$1.99" },
-      { name: "Kulfi", price: "$2.99" },
+      { name: "Kulfi", description: "A rich, dense Indian frozen dessert.", price: "$2.99" },
       { name: "Ice Cream Cone", price: "$2.99" },
     ],
   },
@@ -233,7 +234,7 @@ export default function Home() {
       <section className="menu-section" id="menu">
         <div className="section-heading">
           <h2>Your favorites,<br />all in one place.</h2>
-          <p>Tap a section to browse. Prices reflect the current in-store menu and may change.</p>
+          <p>Open a section, then hover or tap a dish for a short description. Prices may change.</p>
         </div>
         <div className="menu-jump" aria-label="Menu categories">
           {menuSections.map((section) => <a key={section.id} href={`#${section.id}`}>{section.title}</a>)}
@@ -251,10 +252,13 @@ export default function Home() {
               </summary>
               <div className="menu-items">
                 {section.items.map((item) => (
-                  <div className="menu-item" key={`${section.id}-${item.name}`}>
-                    <div><strong>{item.name}</strong>{item.detail && <span>{item.detail}</span>}</div>
-                    <b>{item.price}</b>
-                  </div>
+                  <details className="menu-item" key={`${section.id}-${item.name}`}>
+                    <summary>
+                      <div><strong>{item.name}</strong>{item.detail && <span>{item.detail}</span>}</div>
+                      <b>{item.price}</b>
+                    </summary>
+                    <div className="menu-description-wrap"><p>{item.description ?? "Description demo"}</p></div>
+                  </details>
                 ))}
               </div>
             </details>
