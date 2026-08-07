@@ -313,7 +313,7 @@ footer span { color: var(--muted); }
   .header-actions { display: none; }
   .hero { min-height: auto; grid-template-columns: 1fr; padding: 36px 18px 30px; gap: 24px; }
   .eyebrow { margin-bottom: 12px; font-size: 0.7rem; }
-  h1 { max-width: 9ch; font-size: clamp(3.2rem, 14.5vw, 4.55rem); line-height: 0.92; }
+  h1 { max-width: none; font-size: clamp(3.2rem, 14.5vw, 4.55rem); line-height: 0.92; }
   .hero-subtitle { margin: 16px 0 22px; font-size: 1rem; line-height: 1.48; }
   .hero-actions { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
   .hero-actions .button, .hero-actions .text-link { min-height: 48px; width: 100%; padding: 0 12px; justify-content: center; font-size: 0.9rem; }
@@ -350,7 +350,7 @@ footer span { color: var(--muted); }
   .menu-item strong { font-size: 0.96rem; line-height: 1.25; }
   .menu-item b { font-size: 0.92rem; }
   .menu-copy-swap { height: auto; min-height: 38px; }
-  .menu-description { position: static; display: block; width: auto; font-size: 0.8rem; line-height: 1.35; }
+  .menu-description { position: static; display: block; width: auto; opacity: 1; transform: translateY(0); font-size: 0.8rem; line-height: 1.35; }
   .menu-quantity { display: none; }
   .catering-section { margin: 0 10px 72px; padding: 42px 20px; grid-template-columns: 1fr; gap: 32px; border-radius: 22px; }
   .catering-copy h2 { font-size: clamp(2.8rem, 13vw, 4rem); }
