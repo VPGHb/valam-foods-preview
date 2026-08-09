@@ -1,11 +1,14 @@
 import Image from "next/image";
-import { FacebookLogo, InstagramLogo, MapPin, Phone } from "@phosphor-icons/react/ssr";
+import { BowlFood, FacebookLogo, InstagramLogo, MapPin, Phone } from "@phosphor-icons/react/ssr";
+import { readMenu, seedMenuIfEmpty } from "@/db/menu";
 
 type MenuItem = {
+  id?: string;
   name: string;
   detail?: string;
   description?: string;
   price: string;
+  imageUrl?: string;
 };
 
 type MenuSection = {
@@ -176,7 +179,16 @@ const restaurantSchema = {
   ],
 };
 
-export default function Home() {
+export default async function Home() {
+  let renderedMenuSections = menuSections;
+  try {
+    await seedMenuIfEmpty(menuSections);
+    const storedMenu = await readMenu();
+    if (storedMenu.length) renderedMenuSections = storedMenu;
+  } catch {
+    // The static menu keeps local previews and portable builds usable without a database.
+  }
+
   return (
     <main>
       <script
@@ -237,14 +249,14 @@ export default function Home() {
           <p>Open a section to browse dishes, prices and simple descriptions. Details stay visible on touch screens.</p>
         </div>
         <div className="menu-jump" aria-label="Menu categories">
-          {menuSections.map((section) => <a key={section.id} href={`#${section.id}`}>{section.title}</a>)}
+          {renderedMenuSections.map((section) => <a key={section.id} href={`#${section.id}`}>{section.title}</a>)}
         </div>
         <aside className="food-notice" aria-labelledby="food-notice-title">
           <strong id="food-notice-title">Food allergy notice</strong>
           <p>Ingredients and preparation methods can change, and cross-contact may occur. Please tell staff about any allergy before ordering. We cannot guarantee that any item is allergen-free.</p>
         </aside>
         <div className="menu-groups">
-          {menuSections.map((section, index) => (
+          {renderedMenuSections.map((section, index) => (
             <details className={`menu-group ${section.tone}`} id={section.id} key={section.id} open={index < 2}>
               <summary>
                 <span><strong>{section.title}</strong><small>{section.note}</small></span>
@@ -252,18 +264,22 @@ export default function Home() {
               </summary>
               <div className="menu-items">
                 {section.items.map((item) => (
-                  <div className="menu-item" key={`${section.id}-${item.name}`}>
-                    <div className="menu-item-top">
-                      <div className="menu-item-copy">
-                        <strong>{item.name}</strong>
-                        <div className="menu-copy-swap">
-                          {item.detail && <span className="menu-quantity">{item.detail}</span>}
-                          <span className="menu-description">{item.description ?? "Description demo"}</span>
-                        </div>
-                      </div>
-                      <b>{item.price}</b>
+                  <article className="menu-item" key={item.id ?? `${section.id}-${item.name}`}>
+                    <div className="menu-photo">
+                      {item.imageUrl ? (
+                        // The admin accepts portable image URLs until a final media host is selected.
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={item.imageUrl} alt={item.name} loading="lazy" />
+                      ) : (
+                        <span className="menu-photo-empty"><BowlFood size={34} weight="duotone" aria-hidden="true" /><small>Photo coming soon</small></span>
+                      )}
                     </div>
-                  </div>
+                    <div className="menu-item-body">
+                      <div className="menu-item-heading"><strong>{item.name}</strong><b>{item.price}</b></div>
+                      {item.detail && <span className="menu-quantity">{item.detail}</span>}
+                      <p className="menu-description">{item.description ?? "Description demo"}</p>
+                    </div>
+                  </article>
                 ))}
               </div>
             </details>
