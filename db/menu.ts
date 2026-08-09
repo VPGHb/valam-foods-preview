@@ -53,7 +53,7 @@ const itemTableSql = `CREATE TABLE IF NOT EXISTS menu_items (
   FOREIGN KEY (category_id) REFERENCES menu_categories(id) ON DELETE CASCADE
 )`;
 
-async function ensureMenuTables() {
+export async function ensureMenuTables() {
   const d1 = getD1();
   await d1.batch([
     d1.prepare(categoryTableSql),
@@ -121,4 +121,24 @@ export async function updateMenuItem(id: string, input: Omit<MenuItemRecord, "id
 export async function deleteMenuItem(id: string) {
   await ensureMenuTables();
   await getD1().prepare("DELETE FROM menu_items WHERE id = ?").bind(id).run();
+}
+
+export async function restoreMenu(categories: MenuCategoryRecord[]) {
+  await ensureMenuTables();
+  const d1 = getD1();
+  const now = Date.now();
+  const statements = [
+    d1.prepare("DELETE FROM menu_items"),
+    d1.prepare("DELETE FROM menu_categories"),
+    ...categories.flatMap((category, categoryIndex) => {
+      const categoryStatement = d1.prepare(
+        "INSERT INTO menu_categories (id, title, note, tone, sort_order, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)"
+      ).bind(category.id, category.title, category.note, category.tone, category.sortOrder ?? categoryIndex, now, now);
+      const itemStatements = category.items.map((item, itemIndex) => d1.prepare(
+        "INSERT INTO menu_items (id, category_id, name, description, detail, price, image_url, is_visible, sort_order, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+      ).bind(item.id || crypto.randomUUID(), category.id, item.name, item.description, item.detail, item.price, item.imageUrl, item.isVisible ? 1 : 0, item.sortOrder ?? itemIndex, now, now));
+      return [categoryStatement, ...itemStatements];
+    }),
+  ];
+  await d1.batch(statements);
 }

@@ -23,3 +23,17 @@ export const menuItems = sqliteTable("menu_items", {
   createdAt: integer("created_at", { mode: "timestamp_ms" }).notNull(),
   updatedAt: integer("updated_at", { mode: "timestamp_ms" }).notNull(),
 }, (table) => [index("idx_menu_items_category_visible_sort").on(table.categoryId, table.isVisible, table.sortOrder)]);
+
+export const adminCredentials = sqliteTable("admin_credentials", {
+  email: text("email").primaryKey(),
+  passwordHash: text("password_hash").notNull(),
+  updatedAt: integer("updated_at", { mode: "timestamp_ms" }).notNull(),
+});
+
+export const adminRecoveryCodes = sqliteTable("admin_recovery_codes", {
+  id: text("id").primaryKey(),
+  email: text("email").notNull(),
+  codeHash: text("code_hash").notNull(),
+  createdAt: integer("created_at", { mode: "timestamp_ms" }).notNull(),
+  usedAt: integer("used_at", { mode: "timestamp_ms" }),
+}, (table) => [index("idx_admin_recovery_email_unused").on(table.email, table.usedAt)]);

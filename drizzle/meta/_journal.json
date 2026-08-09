@@ -15,6 +15,13 @@
       "when": 1786297784771,
       "tag": "0001_happy_reaper",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1786300742869,
+      "tag": "0002_supreme_sebastian_shaw",
+      "breakpoints": true
     }
   ]
 }
