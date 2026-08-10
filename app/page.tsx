@@ -446,12 +446,20 @@ export default function Home() {
 
       <section className="visit-section" id="visit">
         <div className="map-wrap">
-          <iframe
-            title="Map showing VALAM FOODS at 224 Correja Ave in Iselin"
-            src="https://www.google.com/maps?q=224+Correja+Ave,+Iselin,+NJ+08830&output=embed"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+          <div className="location-card">
+            <div className="location-visual" aria-hidden="true">
+              <span className="location-road road-one" />
+              <span className="location-road road-two" />
+              <span className="location-pin"><MapPin size={62} weight="fill" /></span>
+            </div>
+            <div className="location-card-copy">
+              <p className="eyebrow">Find us in Iselin</p>
+              <strong>VALAM FOODS</strong>
+              <address>224 Correja Ave<br />Iselin, NJ 08830</address>
+              <a className="button" href="https://www.google.com/maps/dir/?api=1&destination=224+Correja+Ave,+Iselin,+NJ+08830" target="_blank" rel="noreferrer">Open in Google Maps</a>
+              <small>Directions open in a new tab.</small>
+            </div>
+          </div>
         </div>
         <div className="visit-copy">
           <h2>Come hungry.</h2>
@@ -468,9 +476,6 @@ export default function Home() {
               <div><dt>Thursday</dt><dd>9 AM-9 PM</dd></div>
             </dl>
             <p>Holiday hours may vary. Call to confirm.</p>
-          </div>
-          <div className="visit-actions">
-            <a className="button" href="https://www.google.com/maps/dir/?api=1&destination=224+Correja+Ave,+Iselin,+NJ+08830" target="_blank" rel="noreferrer">Get directions</a>
           </div>
           <div className="social-follow" id="socials">
             <strong>Follow VALAM FOODS</strong>
