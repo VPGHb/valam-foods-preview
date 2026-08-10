@@ -49,6 +49,8 @@ test("gives every menu item an illustrated placeholder and keeps launch controls
   assert.match(page, /Kaumudi Alur/);
   assert.match(page, /review-marquee/);
   assert.match(page, /Customer review carousel/);
+  assert.match(page, /out of 5 stars/);
+  assert.match(page, /reviewRating/);
   assert.match(layout, /Indian Restaurant, Sweets & Snacks in Iselin, NJ/);
   assert.doesNotMatch(layout, /keywords:/);
   assert.match(llms, /Gujarati snacks/);

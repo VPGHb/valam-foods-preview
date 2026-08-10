@@ -154,16 +154,16 @@ const localFaqs = [
 ] as const;
 
 const testimonials = [
-  { author: "Raj Bhavsar", quote: "Food was very delicious, service was top notch, and the food is made fresh every day.", focus: "Fresh food and service" },
-  { author: "Rohan Shah", quote: "Such great vegetarian food. The tiffin variety, taste, quality and quantity are incredible.", focus: "Vegetarian tiffin" },
-  { author: "Anil Kumar Moka", quote: "Must try the freshly made vada pav. Everything we tried tasted fresh and authentic.", focus: "Fresh vada pav" },
-  { author: "Sumit Kyada", quote: "The thali felt like authentic Indian home-style cooking, with flavorful food and warm service.", focus: "Indian homestyle thali" },
-  { author: "Taksh Patel", quote: "I traveled from Canada to try the pani puri. It brought back lovely memories of Indian flavors.", focus: "Pani puri" },
-  { author: "Supriya Davis", quote: "The atmosphere was friendly and homey, the food was delicious, and we planned to return the next day.", focus: "Pav bhaji and mango lassi" },
-  { author: "Amit Mehndirata", quote: "Fresh, tasty and great value. I often come for thali, aloo paratha, chai and thepla.", focus: "Thali, paratha and chai" },
-  { author: "Kaumudi Alur", quote: "Amazing food at a great price. The khaman and affordable daily tiffin tasted truly homely.", focus: "Khaman and daily tiffin" },
-  { author: "Dina Patel", quote: "The food is delicious and close to a home-cooked meal. The pani puri has many tasty flavors.", focus: "Home-style food" },
-  { author: "Shilpa Desai", quote: "Perfect tea and Papdi No Lot. The staff made every guest feel welcome, like family.", focus: "Tea and Papdi No Lot" },
+  { author: "Raj Bhavsar", quote: "Food was very delicious, service was top notch, and the food is made fresh every day.", focus: "Fresh food and service", rating: 5 },
+  { author: "Rohan Shah", quote: "Such great vegetarian food. The tiffin variety, taste, quality and quantity are incredible.", focus: "Vegetarian tiffin", rating: 5 },
+  { author: "Anil Kumar Moka", quote: "Must try the freshly made vada pav. Everything we tried tasted fresh and authentic.", focus: "Fresh vada pav", rating: 5 },
+  { author: "Sumit Kyada", quote: "The thali felt like authentic Indian home-style cooking, with flavorful food and warm service.", focus: "Indian homestyle thali", rating: 5 },
+  { author: "Taksh Patel", quote: "I traveled from Canada to try the pani puri. It brought back lovely memories of Indian flavors.", focus: "Pani puri", rating: 5 },
+  { author: "Supriya Davis", quote: "The atmosphere was friendly and homey, the food was delicious, and we planned to return the next day.", focus: "Pav bhaji and mango lassi", rating: 5 },
+  { author: "Amit Mehndirata", quote: "Fresh, tasty and great value. I often come for thali, aloo paratha, chai and thepla.", focus: "Thali, paratha and chai", rating: 5 },
+  { author: "Kaumudi Alur", quote: "Amazing food at a great price. The khaman and affordable daily tiffin tasted truly homely.", focus: "Khaman and daily tiffin", rating: 5 },
+  { author: "Dina Patel", quote: "The food is delicious and close to a home-cooked meal. The pani puri has many tasty flavors.", focus: "Home-style food", rating: 5 },
+  { author: "Shilpa Desai", quote: "Perfect tea and Papdi No Lot. The staff made every guest feel welcome, like family.", focus: "Tea and Papdi No Lot", rating: 5 },
 ] as const;
 
 const restaurantSchema = {
@@ -211,6 +211,12 @@ const restaurantSchema = {
     "@type": "Review",
     author: { "@type": "Person", name: testimonial.author },
     reviewBody: testimonial.quote,
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: testimonial.rating,
+      bestRating: 5,
+      worstRating: 1,
+    },
   })),
 };
 
@@ -401,7 +407,14 @@ export default function Home() {
                 {testimonials.map((testimonial) => (
                   <blockquote key={`${copy}-${testimonial.author}`}>
                     <p>“{testimonial.quote}”</p>
-                    <cite><strong>{testimonial.author}</strong><span>{testimonial.focus} · Google review</span></cite>
+                    <cite>
+                      <span className="review-rating" aria-label={`${testimonial.rating} out of 5 stars`}>
+                        <span aria-hidden="true">★★★★★</span>
+                        <b>{testimonial.rating}.0</b>
+                      </span>
+                      <strong>{testimonial.author}</strong>
+                      <span>{testimonial.focus} · Google review</span>
+                    </cite>
                   </blockquote>
                 ))}
               </div>
