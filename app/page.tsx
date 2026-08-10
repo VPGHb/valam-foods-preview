@@ -394,13 +394,19 @@ export default function Home() {
           <p>Customers mention fresh vegetarian food, homestyle tiffin, Indian sweets, pani puri, vada pav, chai and welcoming service.</p>
           <a className="text-link" href="https://www.google.com/search?q=VALAM+FOODS+ISELIN+NJ" target="_blank" rel="noreferrer">See all 191 Google reviews <span aria-hidden="true">→</span></a>
         </div>
-        <div className="review-quotes">
-          {testimonials.map((testimonial) => (
-            <blockquote key={testimonial.author}>
-              <p>“{testimonial.quote}”</p>
-              <cite><strong>{testimonial.author}</strong><span>{testimonial.focus} · Google review</span></cite>
-            </blockquote>
-          ))}
+        <div className="review-marquee" tabIndex={0} aria-label="Customer review carousel. Hover over or focus this area to pause the motion.">
+          <div className="review-track">
+            {[0, 1].map((copy) => (
+              <div className="review-loop-group" aria-hidden={copy === 1} key={copy}>
+                {testimonials.map((testimonial) => (
+                  <blockquote key={`${copy}-${testimonial.author}`}>
+                    <p>“{testimonial.quote}”</p>
+                    <cite><strong>{testimonial.author}</strong><span>{testimonial.focus} · Google review</span></cite>
+                  </blockquote>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
         <p className="review-disclosure">Selected excerpts from publicly posted Google reviews. Excerpts are shortened and may be lightly edited for clarity. Individual experiences vary.</p>
       </section>

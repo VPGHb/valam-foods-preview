@@ -47,12 +47,17 @@ test("gives every menu item an illustrated placeholder and keeps launch controls
   assert.match(page, /Woodbridge/);
   assert.match(page, /Anil Kumar Moka/);
   assert.match(page, /Kaumudi Alur/);
+  assert.match(page, /review-marquee/);
+  assert.match(page, /Customer review carousel/);
   assert.match(layout, /Indian Restaurant, Sweets & Snacks in Iselin, NJ/);
   assert.doesNotMatch(layout, /keywords:/);
   assert.match(llms, /Gujarati snacks/);
   assert.match(llms, /224 Correja Ave/);
   assert.match(css, /grid-template-columns:\s*repeat\(3/);
   assert.match(css, /grid-template-columns:\s*repeat\(2/);
+  assert.match(css, /@keyframes review-scroll/);
+  assert.match(css, /@keyframes review-bob/);
+  assert.match(css, /prefers-reduced-motion/);
   assert.match(siteConfig, /INDEXING_ENABLED = false/);
   assert.match(robots, /Disallow:\s*\//);
   assert.match(sitemap, /<changefreq>weekly<\/changefreq>/);
