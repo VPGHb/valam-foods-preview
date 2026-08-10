@@ -34,6 +34,7 @@ test("gives every menu item an illustrated placeholder and keeps launch controls
   assert.match(page, /Illustrated preview/);
   assert.match(page, /\/menu-items\//);
   assert.doesNotMatch(page, /menuArtFor/);
+  assert.doesNotMatch(page, /Description demo/);
   assert.match(page, /4\.6/);
   assert.match(page, /191 reviews/);
   assert.match(css, /grid-template-columns:\s*repeat\(3/);
@@ -58,10 +59,12 @@ test("ships the complete illustrated menu asset set", async () => {
   const page = await read("app/page.tsx");
   const menuBlock = page.slice(page.indexOf("const menuSections"), page.indexOf("const restaurantSchema"));
   const names = [...menuBlock.matchAll(/\{\s*name:\s*"([^"]+)"/g)].map((match) => match[1]);
+  const descriptions = [...menuBlock.matchAll(/description:\s*"([^"]+)"/g)].map((match) => match[1]);
   const slugs = names.map((name) => name.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""));
   const files = (await readdir(new URL("public/menu-items/", root))).filter((file) => file.endsWith(".jpg"));
 
   assert.equal(names.length, 59);
+  assert.equal(descriptions.length, names.length, "every menu item should have a description");
   assert.equal(new Set(slugs).size, names.length, "every menu item should map to a unique illustration");
   assert.equal(files.length, names.length, "there should be exactly one illustration per menu item");
   for (const slug of slugs) assert.equal(await exists(`public/menu-items/${slug}.jpg`), true, `${slug}.jpg should exist`);

@@ -5,7 +5,7 @@ type MenuItem = {
   id?: string;
   name: string;
   detail?: string;
-  description?: string;
+  description: string;
   price: string;
   imageUrl?: string;
 };
@@ -30,14 +30,14 @@ const menuSections: MenuSection[] = [
       { name: "Dabeli", detail: "1 pc / 2 pc", description: "Spiced potato filling and chutneys served inside a soft pav.", price: "$5.99 / $8.99" },
       { name: "Dal Vada", detail: "10 pc", description: "Crisp savory fritters made with seasoned lentils.", price: "$7.99" },
       { name: "Khachori Chaat", description: "Crisp kachori finished with chutneys and chaat toppings.", price: "$6.99" },
-      { name: "Khasta Kachori", price: "$2.99" },
+      { name: "Khasta Kachori", description: "A flaky, crisp pastry with a savory spiced filling.", price: "$2.99" },
       { name: "Methi Gota", detail: "10 pc", description: "Gujarati-style fenugreek fritters with a crisp outside.", price: "$7.99" },
       { name: "Mirchi Pakoda", detail: "plate / 1 lb", description: "Peppers coated in seasoned batter and fried until crisp.", price: "$9.99 / $20.99" },
       { name: "Veggie Momos", detail: "6 pc", description: "Soft dumplings filled with a savory vegetable mixture.", price: "$8.99" },
       { name: "Pani Puri", detail: "10 pc", description: "Crisp puris served with a tangy, spiced pani filling.", price: "$7.99" },
       { name: "Unlimited Pani Puri", description: "Enjoy repeated servings of crisp puris and flavorful pani.", price: "$12.99" },
       { name: "Papadi No Lot", detail: "S / M / L", description: "A warm Gujarati rice-flour snack with simple seasoning.", price: "$4.99 / $8.99 / $13.99" },
-      { name: "Papdi Khichu", detail: "S / M / L", price: "$4.99 / $7.99 / $14.99" },
+      { name: "Papdi Khichu", detail: "S / M / L", description: "A soft Gujarati rice-flour snack served warm with simple seasoning.", price: "$4.99 / $7.99 / $14.99" },
       { name: "Pav Bhaji", description: "A spiced vegetable bhaji served with warm, toasted pav.", price: "$12.99" },
       { name: "Punjabi Samosa", description: "Crisp pastry filled with seasoned potatoes and peas.", price: "$1.25" },
       { name: "Samosa Chaat", description: "Samosa layered with chutneys and flavorful chaat toppings.", price: "$7.99" },
@@ -57,13 +57,13 @@ const menuSections: MenuSection[] = [
       { name: "Tiffin Service", description: "A convenient homestyle meal selection for everyday dining.", price: "$6.99" },
       { name: "Thali", description: "A balanced plate featuring a selection of homestyle favorites.", price: "$6.99" },
       { name: "Undhiyu", description: "A traditional Gujarati mixed-vegetable dish with warming spices.", price: "$11.99" },
-      { name: "Desi Vaal", price: "$25.00" },
-      { name: "Bajri Na Rotla", detail: "3 pc", price: "$4.99" },
-      { name: "Bajri Na Vada", detail: "1 pc", price: "$0.50" },
-      { name: "Bhakri", detail: "1 pc", price: "$1.00" },
-      { name: "Paratha", detail: "1 pc", price: "$1.50" },
-      { name: "Rotli", detail: "1 pc", price: "$0.50" },
-      { name: "Thepla", detail: "1 pc", price: "$1.00" },
+      { name: "Desi Vaal", description: "A comforting Gujarati-style bean preparation with homestyle seasoning.", price: "$25.00" },
+      { name: "Bajri Na Rotla", detail: "3 pc", description: "Rustic pearl-millet flatbreads with a hearty, traditional texture.", price: "$4.99" },
+      { name: "Bajri Na Vada", detail: "1 pc", description: "A savory millet-based fritter with Gujarati-style seasoning.", price: "$0.50" },
+      { name: "Bhakri", detail: "1 pc", description: "A firm, homestyle flatbread with a satisfying rustic texture.", price: "$1.00" },
+      { name: "Paratha", detail: "1 pc", description: "A warm, flaky layered flatbread cooked until lightly golden.", price: "$1.50" },
+      { name: "Rotli", detail: "1 pc", description: "A soft, thin everyday Gujarati wheat flatbread.", price: "$0.50" },
+      { name: "Thepla", detail: "1 pc", description: "A seasoned Gujarati flatbread with a soft, lightly spiced finish.", price: "$1.00" },
     ],
   },
   {
@@ -72,15 +72,15 @@ const menuSections: MenuSection[] = [
     note: "Traditional treats by the piece or pound",
     tone: "green",
     items: [
-      { name: "Adadiya Pak", detail: "1/2 lb", price: "$6.99" },
-      { name: "Assorted Sweets", price: "$13.99" },
-      { name: "Churma Ladu", detail: "2 pc", price: "$5.00" },
-      { name: "Dudhi No Halwo", price: "$12.99" },
+      { name: "Adadiya Pak", detail: "1/2 lb", description: "A rich Gujarati sweet with a warm, traditional flavor.", price: "$6.99" },
+      { name: "Assorted Sweets", description: "A rotating selection of colorful traditional Indian sweets.", price: "$13.99" },
+      { name: "Churma Ladu", detail: "2 pc", description: "Rich, round wheat-based sweets with a pleasantly crumbly texture.", price: "$5.00" },
+      { name: "Dudhi No Halwo", description: "A soft, rich bottle-gourd sweet prepared in traditional halwa style.", price: "$12.99" },
       { name: "Gulab Jamun", detail: "1 pc", description: "A soft milk-based sweet soaked in fragrant syrup.", price: "$1.50" },
       { name: "Kaju Katli", description: "A smooth cashew sweet cut into delicate diamond pieces.", price: "$17.99" },
-      { name: "Ladu", detail: "1 pc", price: "$2.50" },
-      { name: "Mohanthal", detail: "regular / large", price: "$10.99 / $13.99" },
-      { name: "Sukhadi", detail: "1/2 lb / 1 lb", price: "$5.99 / $11.99" },
+      { name: "Ladu", detail: "1 pc", description: "A classic round Indian sweet with a rich, satisfying bite.", price: "$2.50" },
+      { name: "Mohanthal", detail: "regular / large", description: "A traditional Gujarati gram-flour sweet with a rich, fudgy texture.", price: "$10.99 / $13.99" },
+      { name: "Sukhadi", detail: "1/2 lb / 1 lb", description: "A soft Gujarati wheat-and-jaggery sweet with a homestyle finish.", price: "$5.99 / $11.99" },
     ],
   },
   {
@@ -89,17 +89,17 @@ const menuSections: MenuSection[] = [
     note: "Crisp snacks, fafda and fresh counter favorites",
     tone: "orange",
     items: [
-      { name: "Bhavnagri Gathiya", price: "$7.99" },
-      { name: "Crunchy Fulvadi", price: "$6.99" },
+      { name: "Bhavnagri Gathiya", description: "Thick, savory gram-flour strands with a classic Gujarati crunch.", price: "$7.99" },
+      { name: "Crunchy Fulvadi", description: "Small, crisp seasoned bites made for easy snacking.", price: "$6.99" },
       { name: "Fafda", detail: "1/2 lb / 1 lb", description: "Thin, crisp Gujarati snack made from seasoned gram flour.", price: "$6.99 / $13.99" },
-      { name: "Fulvadi", detail: "1/2 lb", price: "$5.99" },
+      { name: "Fulvadi", detail: "1/2 lb", description: "A crunchy, seasoned gram-flour snack with a savory finish.", price: "$5.99" },
       { name: "Jalebi", detail: "1/2 lb / 1 lb", description: "Crisp spiral sweets finished in fragrant sugar syrup.", price: "$4.99 / $9.99" },
-      { name: "Kachori", detail: "1/2 lb", price: "$13.99" },
+      { name: "Kachori", detail: "1/2 lb", description: "Crisp pastry bites with a flavorful savory filling.", price: "$13.99" },
       { name: "Khaman Dhokla", description: "Soft, airy Gujarati snack with a lightly savory flavor.", price: "$3.99" },
       { name: "Khandvi", detail: "1/2 lb", description: "Tender rolled bites with a smooth, lightly seasoned finish.", price: "$6.99" },
-      { name: "Masala Papadi", price: "$7.99" },
-      { name: "Masala Puri", detail: "1/2 lb", price: "$5.99" },
-      { name: "Tikha Gathiya", price: "$7.99" },
+      { name: "Masala Papadi", description: "Crisp papadi wafers tossed with bold savory seasoning.", price: "$7.99" },
+      { name: "Masala Puri", detail: "1/2 lb", description: "A crunchy puri-style snack finished with a flavorful spice blend.", price: "$5.99" },
+      { name: "Tikha Gathiya", description: "A spicier gathiya variation with a crisp, savory bite.", price: "$7.99" },
     ],
   },
   {
@@ -109,13 +109,13 @@ const menuSections: MenuSection[] = [
     tone: "green",
     items: [
       { name: "Masala Tea", description: "Warm Indian tea brewed with milk and aromatic spices.", price: "$1.50" },
-      { name: "Coffee", detail: "small / regular", price: "$1.00 / $1.50" },
-      { name: "Butter Milk", price: "$1.99" },
+      { name: "Coffee", detail: "small / regular", description: "Freshly prepared hot coffee for a simple, comforting pick-me-up.", price: "$1.00 / $1.50" },
+      { name: "Butter Milk", description: "A cool, savory yogurt-based drink with light seasoning.", price: "$1.99" },
       { name: "Mango Lassi", description: "A cool, creamy mango yogurt drink.", price: "$4.99" },
-      { name: "Masala Jeera", price: "$1.99" },
-      { name: "Limca or Thums Up", price: "$1.99" },
+      { name: "Masala Jeera", description: "A refreshing cumin-spiced beverage with a lively savory flavor.", price: "$1.99" },
+      { name: "Limca or Thums Up", description: "Your choice of a chilled Indian soft drink.", price: "$1.99" },
       { name: "Kulfi", description: "A rich, dense Indian frozen dessert.", price: "$2.99" },
-      { name: "Ice Cream Cone", price: "$2.99" },
+      { name: "Ice Cream Cone", description: "A classic scoop of ice cream served in a crisp cone.", price: "$2.99" },
     ],
   },
 ];
@@ -278,7 +278,7 @@ export default function Home() {
                       <div className="menu-item-body">
                         <div className="menu-item-heading"><strong>{item.name}</strong><b>{item.price}</b></div>
                         {item.detail && <span className="menu-quantity">{item.detail}</span>}
-                        <p className="menu-description">{item.description ?? "Description demo"}</p>
+                        <p className="menu-description">{item.description}</p>
                       </div>
                     </article>
                   );
