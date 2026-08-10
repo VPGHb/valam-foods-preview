@@ -80,6 +80,7 @@ test("gives every menu item an illustrated placeholder and keeps launch controls
   assert.match(css, /@keyframes review-scroll/);
   assert.match(css, /@keyframes review-bob/);
   assert.match(css, /prefers-reduced-motion/);
+  assert.doesNotMatch(css, /@import\s+["']tailwindcss["']/);
   assert.match(siteConfig, /INDEXING_ENABLED = false/);
   assert.match(robots, /Disallow:\s*\//);
   assert.match(sitemap, /<changefreq>weekly<\/changefreq>/);
