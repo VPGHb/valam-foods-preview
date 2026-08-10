@@ -58,9 +58,9 @@ test("gives every menu item an illustrated placeholder and keeps launch controls
   assert.match(page, /review-marquee/);
   assert.match(page, /Customer review carousel/);
   assert.match(page, /MenuItemImage/);
-  assert.match(page, /Open in Google Maps/);
-  assert.doesNotMatch(page, /output=embed/);
-  assert.doesNotMatch(page, /<iframe/);
+  assert.match(page, /Open larger map/);
+  assert.match(page, /output=embed/);
+  assert.match(page, /<iframe/);
   assert.match(menuImage, /Photo coming soon/);
   assert.match(menuImage, /onError/);
   assert.match(menuImage, /onLoad/);
