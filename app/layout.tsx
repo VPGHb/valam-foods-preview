@@ -36,9 +36,9 @@ export const metadata: Metadata = {
       images: [`${SITE_URL}/og.png`],
     },
     icons: {
-      icon: "/valam-foods-logo.png",
-      shortcut: "/valam-foods-logo.png",
-      apple: "/valam-foods-logo.png",
+      icon: `${SITE_URL}/valam-foods-logo.png`,
+      shortcut: `${SITE_URL}/valam-foods-logo.png`,
+      apple: `${SITE_URL}/valam-foods-logo.png`,
     },
 };
 

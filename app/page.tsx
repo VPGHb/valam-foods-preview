@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FacebookLogo, InstagramLogo, MapPin, Phone } from "@phosphor-icons/react/ssr";
-import { SITE_URL } from "@/lib/site-config";
+import { SITE_URL, withBasePath } from "@/lib/site-config";
 import { MenuItemImage } from "./menu-item-image";
 
 type MenuItem = {
@@ -128,7 +128,7 @@ function menuIllustrationFor(itemName: string) {
     .replace(/&/g, "and")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
-  return `/menu-items/${filename}.jpg`;
+  return withBasePath(`/menu-items/${filename}.jpg`);
 }
 
 const localFaqs = [
@@ -278,7 +278,7 @@ export default function Home() {
 
       <header className="site-header">
         <a className="brand" href="#top" aria-label="VALAM FOODS home">
-          <Image src="/valam-foods-logo.png" alt="VALAM FOODS" width={152} height={152} priority />
+          <Image src={withBasePath("/valam-foods-logo.png")} alt="VALAM FOODS" width={152} height={152} priority />
         </a>
         <nav aria-label="Primary navigation">
           <a href="#menu">Menu</a>
@@ -311,10 +311,10 @@ export default function Home() {
         </div>
         <div className="hero-art" aria-label="Illustrated VALAM FOODS favorites including pani puri, vada pav, samosas, paratha and chai">
           <div className="poster-frame poster-primary">
-            <Image src="/hero-street-food-v2.png" alt="Illustrated platter of pani puri, vada pav, samosas and chaat" fill sizes="(max-width: 760px) 92vw, 49vw" priority />
+            <Image src={withBasePath("/hero-street-food-v2.png")} alt="Illustrated platter of pani puri, vada pav, samosas and chaat" fill sizes="(max-width: 760px) 92vw, 49vw" priority />
           </div>
           <div className="poster-frame poster-secondary">
-            <Image src="/hero-paratha-chai-v2.png" alt="Illustrated parathas, masala chai, yogurt and Indian sweets" fill sizes="(max-width: 760px) 42vw, 18vw" />
+            <Image src={withBasePath("/hero-paratha-chai-v2.png")} alt="Illustrated parathas, masala chai, yogurt and Indian sweets" fill sizes="(max-width: 760px) 42vw, 18vw" />
           </div>
         </div>
       </section>
@@ -494,15 +494,15 @@ export default function Home() {
       </aside>
 
       <footer>
-        <Image src="/valam-foods-logo.png" alt="VALAM FOODS" width={170} height={170} />
+        <Image src={withBasePath("/valam-foods-logo.png")} alt="VALAM FOODS" width={170} height={170} />
         <div className="footer-brand">
           <strong>VALAM FOODS ISELIN NJ</strong>
           <span>Indian street food, sweets and tiffin</span>
           <nav className="legal-links" aria-label="Legal and accessibility">
-            <a href="/privacy">Privacy</a>
-            <a href="/terms">Terms</a>
-            <a href="/disclaimer">Disclaimers</a>
-            <a href="/accessibility">Accessibility</a>
+            <a href={withBasePath("/privacy")}>Privacy</a>
+            <a href={withBasePath("/terms")}>Terms</a>
+            <a href={withBasePath("/disclaimer")}>Disclaimers</a>
+            <a href={withBasePath("/accessibility")}>Accessibility</a>
           </nav>
         </div>
         <div className="footer-contact">

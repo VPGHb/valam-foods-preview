@@ -7,18 +7,25 @@ const read = (path) => readFile(new URL(path, root), "utf8");
 const exists = async (path) => access(new URL(path, root)).then(() => true, () => false);
 
 test("exports a fully static public website", async () => {
-  const [config, page, hosting] = await Promise.all([
+  const [config, page, hosting, workflow, readme] = await Promise.all([
     read("next.config.ts"),
     read("app/page.tsx"),
     read(".openai/hosting.json"),
+    read(".github/workflows/deploy-pages.yml"),
+    read("README.md"),
   ]);
   assert.match(config, /output:\s*"export"/);
   assert.match(config, /unoptimized:\s*true/);
+  assert.match(config, /assetPrefix/);
   assert.doesNotMatch(page, /readMenu|seedMenuIfEmpty|cloudflare:workers/);
   assert.doesNotMatch(hosting, /"d1"|"r2"/);
   assert.equal(await exists("app/admin/page.tsx"), false);
   assert.equal(await exists("app/api/admin/menu/route.ts"), false);
   assert.equal(await exists("db/menu.ts"), false);
+  assert.match(workflow, /actions\/deploy-pages@v4/);
+  assert.match(workflow, /NEXT_PUBLIC_BASE_PATH:\s*\/valam-foods-preview/);
+  assert.match(readme, /Open the latest live preview/);
+  assert.match(readme, /vpghb\.github\.io\/valam-foods-preview/);
 });
 
 test("gives every menu item an illustrated placeholder and keeps launch controls", async () => {

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { withBasePath } from "@/lib/site-config";
 
 export default function Loading() {
   return (
@@ -6,7 +7,7 @@ export default function Loading() {
       <div className="loading-card">
         <Image
           className="loading-logo"
-          src="/valam-foods-logo.png"
+          src={withBasePath("/valam-foods-logo.png")}
           alt="VALAM FOODS"
           width={150}
           height={150}

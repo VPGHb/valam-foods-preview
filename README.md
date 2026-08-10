@@ -3,6 +3,15 @@
 A fully static website for VALAM FOODS in Iselin, New Jersey. It has no admin
 dashboard, database, login, server-side storage, or runtime secrets.
 
+## Quick access
+
+- **[Open the latest live preview](https://valam-foods-iselin.shd65d9k5s.chatgpt.site/)**
+- **[Open the GitHub Pages preview](https://vpghb.github.io/valam-foods-preview/)**
+- [Check deployment progress](https://github.com/VPGHb/valam-foods-preview/actions)
+
+The live preview is available immediately. GitHub Pages updates automatically
+after the `Deploy VALAM FOODS to GitHub Pages` workflow finishes successfully.
+
 ## Local development
 
 Requires Node.js 22.13 or newer.
@@ -28,6 +37,6 @@ npm run dev
 `npm run build` creates the static site in `dist/client/`. Deploy that folder to
 Cloudflare Pages, GitHub Pages, Netlify, or any ordinary static web host.
 
-With Git-connected hosting, pushing a commit automatically rebuilds and
-publishes the website. Git history and a local clone provide recovery without
-a separate backup service.
+The included GitHub Pages workflow rebuilds and publishes the website whenever
+`main` is updated. Git history and a local clone provide recovery without a
+separate backup service.

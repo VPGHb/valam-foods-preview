@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import { withBasePath } from "@/lib/site-config";
 
 export default function NotFound() {
   return (
     <main className="status-page">
       <div className="status-shell">
-        <Link className="status-brand" href="/" aria-label="VALAM FOODS home">
-          <Image src="/valam-foods-logo.png" alt="VALAM FOODS" width={132} height={132} priority />
+        <Link className="status-brand" href={withBasePath("/")} aria-label="VALAM FOODS home">
+          <Image src={withBasePath("/valam-foods-logo.png")} alt="VALAM FOODS" width={132} height={132} priority />
         </Link>
 
         <div className="status-content">
@@ -19,8 +20,8 @@ export default function NotFound() {
             <h1>This page left the table.</h1>
             <p>The link may be outdated, but the menu is still fresh.</p>
             <div className="status-actions">
-              <Link className="button" href="/">Back home</Link>
-              <Link className="status-menu-link" href="/#menu">View the menu <span aria-hidden="true">↗</span></Link>
+              <Link className="button" href={withBasePath("/")}>Back home</Link>
+              <Link className="status-menu-link" href={withBasePath("/#menu")}>View the menu <span aria-hidden="true">↗</span></Link>
             </div>
           </section>
         </div>

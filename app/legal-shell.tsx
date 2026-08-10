@@ -1,15 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { withBasePath } from "@/lib/site-config";
 
 export function LegalShell({ title, intro, children }: { title: string; intro: string; children: ReactNode }) {
   return (
     <main className="legal-page">
       <header className="legal-header">
-        <Link href="/" aria-label="Return to VALAM FOODS home">
-          <Image src="/valam-foods-logo.png" alt="VALAM FOODS" width={120} height={120} priority />
+        <Link href={withBasePath("/")} aria-label="Return to VALAM FOODS home">
+          <Image src={withBasePath("/valam-foods-logo.png")} alt="VALAM FOODS" width={120} height={120} priority />
         </Link>
-        <Link className="text-link" href="/">Back to website</Link>
+        <Link className="text-link" href={withBasePath("/")}>Back to website</Link>
       </header>
       <article className="legal-document">
         <p className="eyebrow">Website information</p>
