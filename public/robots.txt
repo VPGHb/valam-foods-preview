@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /
+Sitemap: https://valam-foods-iselin.shd65d9k5s.chatgpt.site/sitemap.xml

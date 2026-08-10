@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   description: "Menu, food allergy, review and third-party service disclaimers for the VALAM FOODS website.",
 };
 
+export const dynamic = "force-static";
+
 export default function DisclaimerPage() {
   return (
     <LegalShell title="Website Disclaimers" intro="Please read these notices before relying on menu, dietary, review or third-party information shown on this website.">

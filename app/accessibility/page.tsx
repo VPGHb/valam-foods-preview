@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   description: "Accessibility commitment and support information for the VALAM FOODS website.",
 };
 
+export const dynamic = "force-static";
+
 export default function AccessibilityPage() {
   return (
     <LegalShell title="Accessibility" intro="VALAM FOODS wants every visitor to be able to use this website and obtain restaurant information.">

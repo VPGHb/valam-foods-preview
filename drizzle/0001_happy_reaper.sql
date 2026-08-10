@@ -1,2 +1,0 @@
-CREATE INDEX `idx_menu_categories_sort` ON `menu_categories` (`sort_order`);--> statement-breakpoint
-CREATE INDEX `idx_menu_items_category_visible_sort` ON `menu_items` (`category_id`,`is_visible`,`sort_order`);

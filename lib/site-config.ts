@@ -1,11 +1,5 @@
-import { env } from "cloudflare:workers";
+// Change SITE_URL once after connecting the final custom domain.
+export const SITE_URL = "https://valam-foods-iselin.shd65d9k5s.chatgpt.site";
 
-export function runtimeValue(name: string) {
-  const runtime = env as unknown as Record<string, unknown>;
-  const candidate = runtime[name] ?? process.env[name];
-  return typeof candidate === "string" ? candidate.trim() : "";
-}
-
-export function searchIndexingEnabled() {
-  return runtimeValue("PUBLIC_SEARCH_INDEXING").toLowerCase() === "enabled";
-}
+// Keep the demo out of search results until the business approves it for launch.
+export const INDEXING_ENABLED = false;

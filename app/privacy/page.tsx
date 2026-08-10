@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   description: "Privacy information for the VALAM FOODS website.",
 };
 
+export const dynamic = "force-static";
+
 export default function PrivacyPage() {
   return (
     <LegalShell title="Privacy Policy" intro="This policy explains how the VALAM FOODS website handles information when you visit it.">

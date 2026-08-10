@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { BowlFood, FacebookLogo, InstagramLogo, MapPin, Phone } from "@phosphor-icons/react/ssr";
-import { readMenu, seedMenuIfEmpty } from "@/db/menu";
 
 type MenuItem = {
   id?: string;
@@ -179,16 +178,9 @@ const restaurantSchema = {
   ],
 };
 
-export default async function Home() {
-  let renderedMenuSections = menuSections;
-  try {
-    await seedMenuIfEmpty(menuSections);
-    const storedMenu = await readMenu();
-    if (storedMenu.length) renderedMenuSections = storedMenu;
-  } catch {
-    // The static menu keeps local previews and portable builds usable without a database.
-  }
+export const dynamic = "force-static";
 
+export default function Home() {
   return (
     <main>
       <script
@@ -249,14 +241,14 @@ export default async function Home() {
           <p>Open a section to browse dishes, prices and simple descriptions. Details stay visible on touch screens.</p>
         </div>
         <div className="menu-jump" aria-label="Menu categories">
-          {renderedMenuSections.map((section) => <a key={section.id} href={`#${section.id}`}>{section.title}</a>)}
+          {menuSections.map((section) => <a key={section.id} href={`#${section.id}`}>{section.title}</a>)}
         </div>
         <aside className="food-notice" aria-labelledby="food-notice-title">
           <strong id="food-notice-title">Food allergy notice</strong>
           <p>Ingredients and preparation methods can change, and cross-contact may occur. Please tell staff about any allergy before ordering. We cannot guarantee that any item is allergen-free.</p>
         </aside>
         <div className="menu-groups">
-          {renderedMenuSections.map((section, index) => (
+          {menuSections.map((section, index) => (
             <details className={`menu-group ${section.tone}`} id={section.id} key={section.id} open={index < 2}>
               <summary>
                 <span><strong>{section.title}</strong><small>{section.note}</small></span>
@@ -267,7 +259,7 @@ export default async function Home() {
                   <article className="menu-item" key={item.id ?? `${section.id}-${item.name}`}>
                     <div className="menu-photo">
                       {item.imageUrl ? (
-                        // The admin accepts portable image URLs until a final media host is selected.
+                        // Add food photos to public/ and use a local path such as /foods/samosa.jpg.
                         // eslint-disable-next-line @next/next/no-img-element
                         <img src={item.imageUrl} alt={item.name} loading="lazy" />
                       ) : (

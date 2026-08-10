@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   description: "Terms for using the VALAM FOODS website.",
 };
 
+export const dynamic = "force-static";
+
 export default function TermsPage() {
   return (
     <LegalShell title="Website Terms" intro="These terms apply when you use the VALAM FOODS website. By using the site, you agree to these terms.">
