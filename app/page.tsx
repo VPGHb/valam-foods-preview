@@ -120,28 +120,13 @@ const menuSections: MenuSection[] = [
   },
 ];
 
-const menuArt = {
-  tiffin: "/menu-art/tiffin-thali.png",
-  paniPuri: "/menu-art/pani-puri.png",
-  fried: "/menu-art/fried-snacks.png",
-  breads: "/menu-art/indian-breads.png",
-  sweets: "/menu-art/sweets.png",
-  chaat: "/menu-art/chaat-pav.png",
-  farsan: "/menu-art/farsan.png",
-  drinks: "/menu-art/drinks-dessert.png",
-} as const;
-
-function menuArtFor(sectionId: string, itemName: string) {
-  if (sectionId === "mains") {
-    return /tiffin|thali|undhiyu|vaal/i.test(itemName) ? menuArt.tiffin : menuArt.breads;
-  }
-  if (sectionId === "sweets") return menuArt.sweets;
-  if (sectionId === "savory") return menuArt.farsan;
-  if (sectionId === "drinks") return menuArt.drinks;
-  if (/pani puri/i.test(itemName)) return menuArt.paniPuri;
-  if (/samosa|vada|gota|pakoda|kachori|momos|spring roll/i.test(itemName) && !/chaat|pav/i.test(itemName)) return menuArt.fried;
-  if (/papadi no lot|papdi khichu/i.test(itemName)) return menuArt.farsan;
-  return menuArt.chaat;
+function menuIllustrationFor(itemName: string) {
+  const filename = itemName
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+  return `/menu-items/${filename}.jpg`;
 }
 
 const restaurantSchema = {
@@ -280,7 +265,7 @@ export default function Home() {
               </summary>
               <div className="menu-items">
                 {section.items.map((item) => {
-                  const imageUrl = item.imageUrl || menuArtFor(section.id, item.name);
+                  const imageUrl = item.imageUrl || menuIllustrationFor(item.name);
                   const isPlaceholder = !item.imageUrl;
                   return (
                     <article className="menu-item" key={item.id ?? `${section.id}-${item.name}`}>

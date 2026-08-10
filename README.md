@@ -15,8 +15,8 @@ npm run dev
 ## Update the website
 
 - Edit menu items, prices, quantities, and descriptions in `app/page.tsx`.
-- Every menu item uses a clearly labeled illustration from `public/menu-art/`
-  until an approved dish photo is available.
+- Every menu item has its own clearly labeled illustration in
+  `public/menu-items/` until an approved dish photo is available.
 - Add approved food photos under `public/foods/`, then set an item's `imageUrl`
   to a path such as `/foods/samosa.jpg` to replace its illustration.
 - Update the final domain and search-indexing launch switch in

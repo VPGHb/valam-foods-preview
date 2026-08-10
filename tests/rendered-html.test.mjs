@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { access, readFile } from "node:fs/promises";
+import { access, readFile, readdir } from "node:fs/promises";
 import test from "node:test";
 
 const root = new URL("../", import.meta.url);
@@ -30,10 +30,10 @@ test("gives every menu item an illustrated placeholder and keeps launch controls
     read("public/sitemap.xml"),
   ]);
   assert.match(page, /className="menu-photo"/);
-  assert.match(page, /menuArtFor/);
+  assert.match(page, /menuIllustrationFor/);
   assert.match(page, /Illustrated preview/);
-  assert.match(page, /\/menu-art\/pani-puri\.png/);
-  assert.match(page, /\/menu-art\/tiffin-thali\.png/);
+  assert.match(page, /\/menu-items\//);
+  assert.doesNotMatch(page, /menuArtFor/);
   assert.match(page, /4\.6/);
   assert.match(page, /191 reviews/);
   assert.match(css, /grid-template-columns:\s*repeat\(3/);
@@ -55,14 +55,14 @@ test("includes all static information pages", async () => {
 });
 
 test("ships the complete illustrated menu asset set", async () => {
-  for (const path of [
-    "public/menu-art/tiffin-thali.png",
-    "public/menu-art/pani-puri.png",
-    "public/menu-art/fried-snacks.png",
-    "public/menu-art/indian-breads.png",
-    "public/menu-art/sweets.png",
-    "public/menu-art/chaat-pav.png",
-    "public/menu-art/farsan.png",
-    "public/menu-art/drinks-dessert.png",
-  ]) assert.equal(await exists(path), true, `${path} should exist`);
+  const page = await read("app/page.tsx");
+  const menuBlock = page.slice(page.indexOf("const menuSections"), page.indexOf("const restaurantSchema"));
+  const names = [...menuBlock.matchAll(/\{\s*name:\s*"([^"]+)"/g)].map((match) => match[1]);
+  const slugs = names.map((name) => name.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""));
+  const files = (await readdir(new URL("public/menu-items/", root))).filter((file) => file.endsWith(".jpg"));
+
+  assert.equal(names.length, 59);
+  assert.equal(new Set(slugs).size, names.length, "every menu item should map to a unique illustration");
+  assert.equal(files.length, names.length, "there should be exactly one illustration per menu item");
+  for (const slug of slugs) assert.equal(await exists(`public/menu-items/${slug}.jpg`), true, `${slug}.jpg should exist`);
 });
