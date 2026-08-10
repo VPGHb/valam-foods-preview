@@ -359,7 +359,6 @@ export default function Home() {
                         {/* Add approved food photos to public/ and set imageUrl to a local path such as /foods/samosa.jpg. */}
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src={imageUrl} alt={isPlaceholder ? `Illustrated ${item.name} from VALAM FOODS in Iselin, NJ` : `${item.name} from VALAM FOODS in Iselin, NJ`} loading="lazy" />
-                        {isPlaceholder && <small className="menu-photo-label">Illustrated preview</small>}
                       </div>
                       <div className="menu-item-body">
                         <div className="menu-item-heading"><strong>{item.name}</strong><b>{item.price}</b></div>

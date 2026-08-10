@@ -33,7 +33,8 @@ test("gives every menu item an illustrated placeholder and keeps launch controls
   ]);
   assert.match(page, /className="menu-photo"/);
   assert.match(page, /menuIllustrationFor/);
-  assert.match(page, /Illustrated preview/);
+  assert.doesNotMatch(page, /Illustrated preview/);
+  assert.doesNotMatch(css, /menu-photo-label/);
   assert.match(page, /\/menu-items\//);
   assert.doesNotMatch(page, /menuArtFor/);
   assert.doesNotMatch(page, /Description demo/);
