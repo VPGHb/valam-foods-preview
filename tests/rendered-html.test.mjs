@@ -22,12 +22,14 @@ test("exports a fully static public website", async () => {
 });
 
 test("gives every menu item an illustrated placeholder and keeps launch controls", async () => {
-  const [page, css, siteConfig, robots, sitemap] = await Promise.all([
+  const [page, layout, css, siteConfig, robots, sitemap, llms] = await Promise.all([
     read("app/page.tsx"),
+    read("app/layout.tsx"),
     read("app/globals.css"),
     read("lib/site-config.ts"),
     read("public/robots.txt"),
     read("public/sitemap.xml"),
+    read("public/llms.txt"),
   ]);
   assert.match(page, /className="menu-photo"/);
   assert.match(page, /menuIllustrationFor/);
@@ -37,6 +39,17 @@ test("gives every menu item an illustrated placeholder and keeps launch controls
   assert.doesNotMatch(page, /Description demo/);
   assert.match(page, /4\.6/);
   assert.match(page, /191 reviews/);
+  assert.match(page, /"@type": "FAQPage"/);
+  assert.match(page, /"@type": "MenuItem"/);
+  assert.match(page, /areaServed/);
+  assert.match(page, /Edison/);
+  assert.match(page, /Woodbridge/);
+  assert.match(page, /Anil Kumar Moka/);
+  assert.match(page, /Kaumudi Alur/);
+  assert.match(layout, /Indian Restaurant, Sweets & Snacks in Iselin, NJ/);
+  assert.doesNotMatch(layout, /keywords:/);
+  assert.match(llms, /Gujarati snacks/);
+  assert.match(llms, /224 Correja Ave/);
   assert.match(css, /grid-template-columns:\s*repeat\(3/);
   assert.match(css, /grid-template-columns:\s*repeat\(2/);
   assert.match(siteConfig, /INDEXING_ENABLED = false/);

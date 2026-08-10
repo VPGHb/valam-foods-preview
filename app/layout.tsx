@@ -15,14 +15,14 @@ const oswald = Oswald({
 
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_URL),
-    title: "VALAM FOODS | Indian Street Food in Iselin, NJ",
-    description: "Vegetarian Indian street food, Gujarati favorites, sweets, chai, tiffin and catering at 224 Correja Ave in Iselin, New Jersey.",
-    keywords: ["Indian food Iselin NJ", "Gujarati food Iselin", "Indian street food near me", "vegetarian restaurant Iselin", "VALAM FOODS", "pani puri Iselin", "vada pav Iselin"],
+    title: "VALAM FOODS | Indian Restaurant, Sweets & Snacks in Iselin, NJ",
+    description: "Visit VALAM FOODS in Iselin, NJ for vegetarian Indian food, Gujarati snacks, traditional sweets, street food, tiffin, chai and catering near Edison and Woodbridge.",
+    applicationName: "VALAM FOODS",
     robots: { index: INDEXING_ENABLED, follow: INDEXING_ENABLED },
     alternates: { canonical: "/" },
     openGraph: {
-      title: "VALAM FOODS | Indian Street Food in Iselin",
-      description: "Street food, Gujarati favorites, sweets, chai, tiffin and catering in Iselin, NJ.",
+      title: "VALAM FOODS | Indian Restaurant, Sweets & Snacks in Iselin, NJ",
+      description: "Vegetarian Indian food, Gujarati snacks, traditional sweets, street food, tiffin and chai in Iselin near Edison and Woodbridge.",
       type: "website",
       locale: "en_US",
       url: SITE_URL,
@@ -31,8 +31,8 @@ export const metadata: Metadata = {
     },
     twitter: {
       card: "summary_large_image",
-      title: "VALAM FOODS | Indian Street Food in Iselin",
-      description: "Street food, Gujarati favorites, sweets, chai, tiffin and catering in Iselin, NJ.",
+      title: "VALAM FOODS | Indian Restaurant, Sweets & Snacks in Iselin, NJ",
+      description: "Vegetarian Indian food, Gujarati snacks, traditional sweets, street food, tiffin and chai in Iselin near Edison and Woodbridge.",
       images: [`${SITE_URL}/og.png`],
     },
     icons: {

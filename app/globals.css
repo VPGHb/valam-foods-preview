@@ -149,7 +149,20 @@ h1 { max-width: 690px; font-size: clamp(4.2rem, 7vw, 7.4rem); text-transform: up
 .flavor-band span { flex: 0 0 auto; font-family: var(--font-display), sans-serif; font-size: clamp(1.25rem, 2vw, 1.9rem); text-transform: uppercase; }
 .flavor-band span:not(:last-child)::after { content: "/"; margin-left: 16px; color: var(--gold); }
 
-.menu-section { max-width: 1380px; margin: 0 auto; padding: 120px 5vw; }
+.local-food-section { max-width: 1380px; margin: 0 auto; padding: 112px 5vw 16px; }
+.local-food-intro { max-width: 900px; display: grid; gap: 20px; }
+.local-food-intro .eyebrow { margin: 0; }
+.local-food-intro h2, .faq-intro h2 { color: var(--green-deep); font-size: clamp(3.2rem, 5.8vw, 6.2rem); text-transform: uppercase; }
+.local-food-intro > p:not(.eyebrow), .faq-intro > p:not(.eyebrow) { max-width: 760px; margin: 0; color: var(--muted); font-size: 1.08rem; line-height: 1.65; }
+.local-food-grid { margin-top: 46px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.local-food-grid article { min-height: 280px; padding: 30px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); display: flex; flex-direction: column; align-items: flex-start; }
+.local-food-grid article:nth-child(2) { background: var(--orange-soft); }
+.local-food-grid article:nth-child(3) { background: var(--green-soft); }
+.local-food-grid article > span { color: var(--orange-deep); font-family: var(--font-display), sans-serif; font-size: 1.2rem; }
+.local-food-grid h3 { margin-top: 42px; color: var(--green-deep); font-family: var(--font-display), sans-serif; font-size: 2rem; line-height: 1; text-transform: uppercase; }
+.local-food-grid p { margin: 14px 0 20px; color: var(--muted); line-height: 1.55; }
+.local-food-grid a { margin-top: auto; color: var(--green-deep); font-weight: 950; text-decoration: underline; text-decoration-color: var(--orange); text-underline-offset: 4px; }
+.menu-section { max-width: 1380px; margin: 0 auto; padding: 104px 5vw 120px; }
 .section-heading { display: flex; flex-direction: column; align-items: flex-start; gap: 22px; max-width: 820px; margin-bottom: 44px; }
 .section-heading h2, .reviews-section h2, .visit-copy h2 { font-size: clamp(3.4rem, 6vw, 6.6rem); text-transform: uppercase; color: var(--green-deep); }
 .section-heading p, .review-intro > p:not(.eyebrow), .visit-copy > p { max-width: 620px; margin: 0; color: var(--muted); font-size: 1.08rem; line-height: 1.6; }
@@ -201,17 +214,28 @@ h1 { max-width: 690px; font-size: clamp(4.2rem, 7vw, 7.4rem); text-transform: up
 .reviews-section { max-width: 1380px; margin: 0 auto; padding: 20px 5vw 120px; display: grid; gap: 56px; }
 .review-intro { display: grid; align-items: start; gap: 22px; max-width: 820px; }
 .review-intro .eyebrow { margin: 0; }
-.review-quotes { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
-blockquote { min-height: 285px; margin: 0; padding: 34px; border-radius: var(--radius); display: flex; flex-direction: column; justify-content: space-between; }
-blockquote:nth-child(1) { grid-column: span 7; background: var(--green); color: white; transform: rotate(-1deg); }
-blockquote:nth-child(2) { grid-column: span 5; background: var(--orange-soft); color: var(--orange-deep); transform: translateY(22px) rotate(1deg); }
-blockquote:nth-child(3) { grid-column: span 5; background: var(--green-soft); color: var(--green-deep); }
-blockquote:nth-child(4) { grid-column: span 7; background: var(--orange); color: #251106; transform: translateY(18px) rotate(-1deg); }
-blockquote p { max-width: 22ch; margin: 0; font-family: var(--font-display), sans-serif; font-size: clamp(1.8rem, 2.6vw, 3rem); line-height: 1.08; text-transform: uppercase; }
+.review-quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+blockquote { min-height: 260px; margin: 0; padding: 30px; border-radius: var(--radius); background: var(--green-soft); color: var(--green-deep); display: flex; flex-direction: column; justify-content: space-between; }
+blockquote:nth-child(4n + 1) { background: var(--green); color: white; }
+blockquote:nth-child(4n + 2) { background: var(--orange-soft); color: var(--orange-deep); }
+blockquote:nth-child(4n + 3) { background: var(--green-soft); color: var(--green-deep); }
+blockquote:nth-child(4n) { background: var(--orange); color: #251106; }
+blockquote p { max-width: none; margin: 0; font-family: var(--font-display), sans-serif; font-size: clamp(1.45rem, 2vw, 2.15rem); line-height: 1.12; text-transform: uppercase; }
 blockquote cite { display: grid; gap: 3px; font-style: normal; }
 blockquote cite strong { font-size: 1rem; }
 blockquote cite span { font-size: 0.82rem; font-weight: 750; opacity: 0.82; }
 .review-disclosure { max-width: 760px; margin: 4px 0 0; color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+
+.faq-section { max-width: 1380px; margin: 0 auto; padding: 12px 5vw 120px; display: grid; grid-template-columns: minmax(0, .8fr) minmax(460px, 1.2fr); gap: clamp(42px, 8vw, 110px); align-items: start; }
+.faq-intro { display: grid; gap: 20px; position: sticky; top: 110px; }
+.faq-intro .eyebrow { margin: 0; }
+.faq-list { border-top: 1px solid var(--line); }
+.faq-list details { border-bottom: 1px solid var(--line); }
+.faq-list summary { min-height: 86px; padding: 20px 50px 20px 0; cursor: pointer; list-style: none; position: relative; display: flex; align-items: center; color: var(--green-deep); font-size: 1.08rem; font-weight: 950; line-height: 1.35; }
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after { content: "+"; position: absolute; right: 4px; width: 34px; height: 34px; border-radius: 50%; background: var(--orange); display: grid; place-items: center; color: #251106; font-size: 1.3rem; }
+.faq-list details[open] summary::after { content: "−"; }
+.faq-list details p { max-width: 720px; margin: -4px 0 0; padding: 0 52px 26px 0; color: var(--muted); line-height: 1.65; }
 
 .visit-section { max-width: 1380px; margin: 0 auto 80px; padding: 0 5vw; display: grid; grid-template-columns: 1.2fr 0.8fr; }
 .map-wrap { min-height: 560px; border-radius: var(--radius) 0 0 var(--radius); overflow: hidden; background: var(--green-soft); }
@@ -304,6 +328,9 @@ footer span { color: var(--muted); }
   .hero-art { min-height: 500px; }
   .catering-section { margin-left: 22px; margin-right: 22px; }
   .review-intro { max-width: 700px; }
+  .review-quotes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .faq-section { grid-template-columns: 1fr; }
+  .faq-intro { position: static; max-width: 760px; }
   .visit-section { grid-template-columns: 1fr 1fr; }
 }
 
@@ -335,6 +362,13 @@ footer span { color: var(--muted); }
   .flavor-band { gap: 12px; padding: 14px 18px; }
   .flavor-band span { font-size: 1.08rem; }
   .flavor-band span:not(:last-child)::after { margin-left: 12px; }
+  .local-food-section { padding: 64px 16px 8px; }
+  .local-food-intro { gap: 15px; }
+  .local-food-intro h2, .faq-intro h2 { font-size: clamp(2.75rem, 12.5vw, 3.9rem); }
+  .local-food-intro > p:not(.eyebrow), .faq-intro > p:not(.eyebrow) { font-size: .96rem; line-height: 1.55; }
+  .local-food-grid { margin-top: 28px; grid-template-columns: 1fr; gap: 10px; }
+  .local-food-grid article { min-height: 220px; padding: 24px; border-radius: 20px; }
+  .local-food-grid h3 { margin-top: 28px; font-size: 1.8rem; }
   .menu-section { padding: 64px 16px 72px; }
   .section-heading { gap: 16px; margin-bottom: 28px; }
   .section-heading h2, .reviews-section h2, .visit-copy h2 { font-size: clamp(2.75rem, 12.5vw, 3.9rem); }
@@ -382,6 +416,10 @@ footer span { color: var(--muted); }
   blockquote:nth-child(n) { flex: 0 0 min(84vw, 340px); transform: none; scroll-snap-align: start; }
   blockquote p { font-size: clamp(1.65rem, 7.5vw, 2.15rem); }
   .review-disclosure { font-size: 0.8rem; }
+  .faq-section { padding: 0 16px 76px; gap: 28px; }
+  .faq-intro { gap: 15px; }
+  .faq-list summary { min-height: 74px; padding-right: 46px; font-size: .96rem; }
+  .faq-list details p { padding-right: 36px; font-size: .9rem; line-height: 1.55; }
   .visit-section { margin-bottom: 42px; padding: 0 10px; grid-template-columns: 1fr; }
   .map-wrap { min-height: 300px; border-radius: 22px 22px 0 0; }
   .visit-copy { padding: 38px 20px; border-radius: 0 0 22px 22px; }

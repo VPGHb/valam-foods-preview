@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { FacebookLogo, InstagramLogo, MapPin, Phone } from "@phosphor-icons/react/ssr";
+import { SITE_URL } from "@/lib/site-config";
 
 type MenuItem = {
   id?: string;
@@ -129,15 +130,58 @@ function menuIllustrationFor(itemName: string) {
   return `/menu-items/${filename}.jpg`;
 }
 
+const localFaqs = [
+  {
+    question: "What kind of Indian food does VALAM FOODS serve?",
+    answer: "VALAM FOODS serves vegetarian Indian street food, Gujarati snacks, homestyle meals, tiffin, traditional sweets, chai and cold drinks.",
+  },
+  {
+    question: "Can I find Indian sweets and Gujarati snacks here?",
+    answer: "Yes. The menu includes Indian sweets such as gulab jamun, kaju katli, jalebi, ladu and mohanthal, plus Gujarati snacks including fafda, gathiya, khandvi and dhokla.",
+  },
+  {
+    question: "Is VALAM FOODS a vegetarian Indian restaurant?",
+    answer: "The current menu is presented as vegetarian. Ingredients and preparation can change, so customers with allergies or specific dietary requirements should confirm details with the restaurant before ordering.",
+  },
+  {
+    question: "Where is VALAM FOODS located?",
+    answer: "VALAM FOODS is at 224 Correja Ave, Iselin, NJ 08830, convenient to Iselin, Metropark, Edison, Woodbridge and nearby Middlesex County communities.",
+  },
+  {
+    question: "Does VALAM FOODS offer catering?",
+    answer: "Yes. Party trays, sweets and Gujarati favorites are available for family gatherings, offices and celebrations. Call the restaurant to confirm current packages and availability.",
+  },
+] as const;
+
+const testimonials = [
+  { author: "Raj Bhavsar", quote: "Food was very delicious, service was top notch, and the food is made fresh every day.", focus: "Fresh food and service" },
+  { author: "Rohan Shah", quote: "Such great vegetarian food. The tiffin variety, taste, quality and quantity are incredible.", focus: "Vegetarian tiffin" },
+  { author: "Anil Kumar Moka", quote: "Must try the freshly made vada pav. Everything we tried tasted fresh and authentic.", focus: "Fresh vada pav" },
+  { author: "Sumit Kyada", quote: "The thali felt like authentic Indian home-style cooking, with flavorful food and warm service.", focus: "Indian homestyle thali" },
+  { author: "Taksh Patel", quote: "I traveled from Canada to try the pani puri. It brought back lovely memories of Indian flavors.", focus: "Pani puri" },
+  { author: "Supriya Davis", quote: "The atmosphere was friendly and homey, the food was delicious, and we planned to return the next day.", focus: "Pav bhaji and mango lassi" },
+  { author: "Amit Mehndirata", quote: "Fresh, tasty and great value. I often come for thali, aloo paratha, chai and thepla.", focus: "Thali, paratha and chai" },
+  { author: "Kaumudi Alur", quote: "Amazing food at a great price. The khaman and affordable daily tiffin tasted truly homely.", focus: "Khaman and daily tiffin" },
+  { author: "Dina Patel", quote: "The food is delicious and close to a home-cooked meal. The pani puri has many tasty flavors.", focus: "Home-style food" },
+  { author: "Shilpa Desai", quote: "Perfect tea and Papdi No Lot. The staff made every guest feel welcome, like family.", focus: "Tea and Papdi No Lot" },
+] as const;
+
 const restaurantSchema = {
-  "@context": "https://schema.org",
+  "@id": `${SITE_URL}/#restaurant`,
   "@type": "Restaurant",
   name: "VALAM FOODS ISELIN NJ",
-  image: "/valam-foods-logo.png",
+  alternateName: "VALAM FOODS",
+  description: "Vegetarian Indian restaurant in Iselin, New Jersey serving Gujarati food, Indian street food, snacks, sweets, tiffin, chai and catering.",
+  url: SITE_URL,
+  logo: `${SITE_URL}/valam-foods-logo.png`,
+  image: [`${SITE_URL}/og.png`, `${SITE_URL}/hero-street-food-v2.png`, `${SITE_URL}/hero-paratha-chai-v2.png`],
   telephone: "+1-267-330-9984",
   priceRange: "$",
-  servesCuisine: ["Indian", "Gujarati", "Vegetarian", "Indian Street Food"],
-  menu: "#menu",
+  servesCuisine: ["Indian", "Gujarati", "Vegetarian", "Indian Street Food", "Indian Sweets"],
+  menu: { "@id": `${SITE_URL}/#menu` },
+  hasMap: "https://www.google.com/maps/search/?api=1&query=VALAM+FOODS+224+Correja+Ave+Iselin+NJ+08830",
+  areaServed: ["Iselin", "Edison", "Woodbridge Township", "Metuchen", "Middlesex County"].map((name) => ({ "@type": "Place", name })),
+  keywords: "Indian restaurant, Gujarati food, Indian sweets, Indian snacks, vegetarian Indian food, Indian street food, tiffin, catering",
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: 4.6,
@@ -163,26 +207,54 @@ const restaurantSchema = {
     longitude: -74.32711,
   },
   sameAs: ["https://www.facebook.com/valamfoodsusa/", "https://www.instagram.com/valamfoodsusa/"],
-  review: [
+  review: testimonials.map((testimonial) => ({
+    "@type": "Review",
+    author: { "@type": "Person", name: testimonial.author },
+    reviewBody: testimonial.quote,
+  })),
+};
+
+const menuSchema = {
+  "@type": "Menu",
+  "@id": `${SITE_URL}/#menu`,
+  name: "VALAM FOODS Indian Food, Sweets and Snacks Menu",
+  url: `${SITE_URL}/#menu`,
+  inLanguage: "en-US",
+  hasMenuSection: menuSections.map((section) => ({
+    "@type": "MenuSection",
+    name: section.title,
+    description: section.note,
+    hasMenuItem: section.items.map((item) => ({
+      "@type": "MenuItem",
+      name: item.name,
+      description: item.description,
+      image: `${SITE_URL}${item.imageUrl || menuIllustrationFor(item.name)}`,
+    })),
+  })),
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    restaurantSchema,
+    menuSchema,
     {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Raj Bhavsar" },
-      reviewBody: "Food was very delicious and service was top notch. Food is made fresh every day, and the value cannot be beat.",
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "VALAM FOODS ISELIN NJ",
+      description: "Official menu, hours, location and contact information for VALAM FOODS in Iselin, New Jersey.",
+      publisher: { "@id": `${SITE_URL}/#restaurant` },
+      inLanguage: "en-US",
     },
     {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Rohan Shah" },
-      reviewBody: "Such great vegetarian food. The tiffin variety, taste, quality and quantity are incredible.",
-    },
-    {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Taksh Patel" },
-      reviewBody: "I traveled from Canada to try this pani puri, and it brought back lovely memories of Indian flavors and tastes.",
-    },
-    {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Shilpa Desai" },
-      reviewBody: "Perfect tea and Papdi no Lot. The staff and owner Artiben welcomed every person with love, like family.",
+      "@type": "FAQPage",
+      "@id": `${SITE_URL}/#faq`,
+      mainEntity: localFaqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: { "@type": "Answer", text: faq.answer },
+      })),
     },
   ],
 };
@@ -194,7 +266,7 @@ export default function Home() {
     <main>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
       <header className="site-header">
@@ -218,9 +290,9 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow">Indian street food in Iselin</p>
-          <h1>Big flavor.<br />Made close to home.</h1>
-          <p className="hero-subtitle">Fresh vegetarian street food, Gujarati favorites, sweets and chai in the heart of Iselin.</p>
+          <p className="eyebrow">Vegetarian Indian restaurant in Iselin, NJ</p>
+          <h1>Indian flavor.<br />Made close to home.</h1>
+          <p className="hero-subtitle">Gujarati food, Indian street snacks, traditional sweets, tiffin and chai at 224 Correja Ave in Iselin.</p>
           <div className="hero-actions">
             <a className="button" href="tel:+12673309984">Call to order</a>
             <a className="text-link" href="#menu">Explore the menu <span aria-hidden="true">→</span></a>
@@ -244,9 +316,23 @@ export default function Home() {
         <span>Vada Pav</span><span>Pani Puri</span><span>Papadi No Lot</span><span>Masala Chai</span><span>Pav Bhaji</span><span>Jalebi</span>
       </div>
 
+      <section className="local-food-section" aria-labelledby="local-food-title">
+        <div className="local-food-intro">
+          <p className="eyebrow">Gujarati and Indian favorites nearby</p>
+          <h2 id="local-food-title">Indian food, sweets and snacks in Iselin.</h2>
+          <p>VALAM FOODS brings vegetarian Indian comfort food to Iselin, close to Metropark and convenient to nearby Edison, Woodbridge, Metuchen and Middlesex County communities.</p>
+        </div>
+        <div className="local-food-grid">
+          <article><span>01</span><h3>Indian street food</h3><p>Explore pani puri, vada pav, pav bhaji, samosa chaat, sev puri and more.</p><a href="#street-food">Browse street food</a></article>
+          <article><span>02</span><h3>Traditional Indian sweets</h3><p>Find jalebi, gulab jamun, kaju katli, ladu, mohanthal and rotating favorites.</p><a href="#sweets">Browse sweets</a></article>
+          <article><span>03</span><h3>Gujarati snacks and meals</h3><p>Choose from fafda, gathiya, khandvi, dhokla, thepla, thali and tiffin selections.</p><a href="#savory">Browse Gujarati snacks</a></article>
+        </div>
+      </section>
+
       <section className="menu-section" id="menu">
         <div className="section-heading">
-          <h2>Your favorites,<br />all in one place.</h2>
+          <p className="eyebrow">VALAM FOODS menu</p>
+          <h2>Indian food, sweets<br />and snacks.</h2>
           <p>Open a section to browse dishes, prices and simple descriptions. Details stay visible on touch screens.</p>
         </div>
         <div className="menu-jump" aria-label="Menu categories">
@@ -272,7 +358,7 @@ export default function Home() {
                       <div className="menu-photo">
                         {/* Add approved food photos to public/ and set imageUrl to a local path such as /foods/samosa.jpg. */}
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={imageUrl} alt={isPlaceholder ? `Illustrated placeholder for ${item.name}` : item.name} loading="lazy" />
+                        <img src={imageUrl} alt={isPlaceholder ? `Illustrated ${item.name} from VALAM FOODS in Iselin, NJ` : `${item.name} from VALAM FOODS in Iselin, NJ`} loading="lazy" />
                         {isPlaceholder && <small className="menu-photo-label">Illustrated preview</small>}
                       </div>
                       <div className="menu-item-body">
@@ -306,28 +392,34 @@ export default function Home() {
         <div className="review-intro">
           <p className="eyebrow">Loved by the neighborhood</p>
           <h2>Food that tastes like home.</h2>
-          <p>Customers call out the warm service, vegetarian choices and authentic flavor.</p>
-          <a className="text-link" href="https://www.google.com/search?q=VALAM+FOODS+ISELIN+NJ" target="_blank" rel="noreferrer">See Google reviews <span aria-hidden="true">→</span></a>
+          <p>Customers mention fresh vegetarian food, homestyle tiffin, Indian sweets, pani puri, vada pav, chai and welcoming service.</p>
+          <a className="text-link" href="https://www.google.com/search?q=VALAM+FOODS+ISELIN+NJ" target="_blank" rel="noreferrer">See all 191 Google reviews <span aria-hidden="true">→</span></a>
         </div>
         <div className="review-quotes">
-          <blockquote>
-            <p>“Food was very delicious and service was top notch. Food is made fresh every day.”</p>
-            <cite><strong>Raj Bhavsar</strong><span>Google review, 4 months ago</span></cite>
-          </blockquote>
-          <blockquote>
-            <p>“Such great vegetarian food. The tiffin variety, taste and quality are incredible.”</p>
-            <cite><strong>Rohan Shah</strong><span>Google review, 4 months ago</span></cite>
-          </blockquote>
-          <blockquote>
-            <p>“I traveled from Canada to try this pani puri. It brought back lovely memories of Indian flavors.”</p>
-            <cite><strong>Taksh Patel</strong><span>Google review, 2 months ago</span></cite>
-          </blockquote>
-          <blockquote>
-            <p>“Perfect tea and Papdi no Lot. Artiben and the staff welcomed every person like family.”</p>
-            <cite><strong>Shilpa Desai</strong><span>Google review, 6 months ago</span></cite>
-          </blockquote>
+          {testimonials.map((testimonial) => (
+            <blockquote key={testimonial.author}>
+              <p>“{testimonial.quote}”</p>
+              <cite><strong>{testimonial.author}</strong><span>{testimonial.focus} · Google review</span></cite>
+            </blockquote>
+          ))}
         </div>
-        <p className="review-disclosure">Selected excerpts from publicly posted Google reviews. Excerpts may be shortened for space. Individual experiences vary.</p>
+        <p className="review-disclosure">Selected excerpts from publicly posted Google reviews. Excerpts are shortened and may be lightly edited for clarity. Individual experiences vary.</p>
+      </section>
+
+      <section className="faq-section" id="faq" aria-labelledby="faq-title">
+        <div className="faq-intro">
+          <p className="eyebrow">Local dining questions</p>
+          <h2 id="faq-title">Before you visit VALAM FOODS.</h2>
+          <p>Quick answers about the Indian menu, location, vegetarian options and catering.</p>
+        </div>
+        <div className="faq-list">
+          {localFaqs.map((faq, index) => (
+            <details key={faq.question} open={index === 0}>
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
       </section>
 
       <section className="visit-section" id="visit">
