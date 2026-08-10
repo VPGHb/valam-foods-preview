@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { BowlFood, FacebookLogo, InstagramLogo, MapPin, Phone } from "@phosphor-icons/react/ssr";
+import { FacebookLogo, InstagramLogo, MapPin, Phone } from "@phosphor-icons/react/ssr";
 
 type MenuItem = {
   id?: string;
@@ -119,6 +119,30 @@ const menuSections: MenuSection[] = [
     ],
   },
 ];
+
+const menuArt = {
+  tiffin: "/menu-art/tiffin-thali.png",
+  paniPuri: "/menu-art/pani-puri.png",
+  fried: "/menu-art/fried-snacks.png",
+  breads: "/menu-art/indian-breads.png",
+  sweets: "/menu-art/sweets.png",
+  chaat: "/menu-art/chaat-pav.png",
+  farsan: "/menu-art/farsan.png",
+  drinks: "/menu-art/drinks-dessert.png",
+} as const;
+
+function menuArtFor(sectionId: string, itemName: string) {
+  if (sectionId === "mains") {
+    return /tiffin|thali|undhiyu|vaal/i.test(itemName) ? menuArt.tiffin : menuArt.breads;
+  }
+  if (sectionId === "sweets") return menuArt.sweets;
+  if (sectionId === "savory") return menuArt.farsan;
+  if (sectionId === "drinks") return menuArt.drinks;
+  if (/pani puri/i.test(itemName)) return menuArt.paniPuri;
+  if (/samosa|vada|gota|pakoda|kachori|momos|spring roll/i.test(itemName) && !/chaat|pav/i.test(itemName)) return menuArt.fried;
+  if (/papadi no lot|papdi khichu/i.test(itemName)) return menuArt.farsan;
+  return menuArt.chaat;
+}
 
 const restaurantSchema = {
   "@context": "https://schema.org",
@@ -255,24 +279,25 @@ export default function Home() {
                 <span className="summary-action">View menu</span>
               </summary>
               <div className="menu-items">
-                {section.items.map((item) => (
-                  <article className="menu-item" key={item.id ?? `${section.id}-${item.name}`}>
-                    <div className="menu-photo">
-                      {item.imageUrl ? (
-                        // Add food photos to public/ and use a local path such as /foods/samosa.jpg.
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img src={item.imageUrl} alt={item.name} loading="lazy" />
-                      ) : (
-                        <span className="menu-photo-empty"><BowlFood size={34} weight="duotone" aria-hidden="true" /><small>Photo coming soon</small></span>
-                      )}
-                    </div>
-                    <div className="menu-item-body">
-                      <div className="menu-item-heading"><strong>{item.name}</strong><b>{item.price}</b></div>
-                      {item.detail && <span className="menu-quantity">{item.detail}</span>}
-                      <p className="menu-description">{item.description ?? "Description demo"}</p>
-                    </div>
-                  </article>
-                ))}
+                {section.items.map((item) => {
+                  const imageUrl = item.imageUrl || menuArtFor(section.id, item.name);
+                  const isPlaceholder = !item.imageUrl;
+                  return (
+                    <article className="menu-item" key={item.id ?? `${section.id}-${item.name}`}>
+                      <div className="menu-photo">
+                        {/* Add approved food photos to public/ and set imageUrl to a local path such as /foods/samosa.jpg. */}
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={imageUrl} alt={isPlaceholder ? `Illustrated placeholder for ${item.name}` : item.name} loading="lazy" />
+                        {isPlaceholder && <small className="menu-photo-label">Illustrated preview</small>}
+                      </div>
+                      <div className="menu-item-body">
+                        <div className="menu-item-heading"><strong>{item.name}</strong><b>{item.price}</b></div>
+                        {item.detail && <span className="menu-quantity">{item.detail}</span>}
+                        <p className="menu-description">{item.description ?? "Description demo"}</p>
+                      </div>
+                    </article>
+                  );
+                })}
               </div>
             </details>
           ))}

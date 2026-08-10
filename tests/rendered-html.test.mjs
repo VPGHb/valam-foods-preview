@@ -21,7 +21,7 @@ test("exports a fully static public website", async () => {
   assert.equal(await exists("db/menu.ts"), false);
 });
 
-test("keeps the public menu, responsive imagery and launch controls", async () => {
+test("gives every menu item an illustrated placeholder and keeps launch controls", async () => {
   const [page, css, siteConfig, robots, sitemap] = await Promise.all([
     read("app/page.tsx"),
     read("app/globals.css"),
@@ -30,7 +30,10 @@ test("keeps the public menu, responsive imagery and launch controls", async () =
     read("public/sitemap.xml"),
   ]);
   assert.match(page, /className="menu-photo"/);
-  assert.match(page, /Photo coming soon/);
+  assert.match(page, /menuArtFor/);
+  assert.match(page, /Illustrated preview/);
+  assert.match(page, /\/menu-art\/pani-puri\.png/);
+  assert.match(page, /\/menu-art\/tiffin-thali\.png/);
   assert.match(page, /4\.6/);
   assert.match(page, /191 reviews/);
   assert.match(css, /grid-template-columns:\s*repeat\(3/);
@@ -48,5 +51,18 @@ test("includes all static information pages", async () => {
     "app/accessibility/page.tsx",
     "app/not-found.tsx",
     "app/loading.tsx",
+  ]) assert.equal(await exists(path), true, `${path} should exist`);
+});
+
+test("ships the complete illustrated menu asset set", async () => {
+  for (const path of [
+    "public/menu-art/tiffin-thali.png",
+    "public/menu-art/pani-puri.png",
+    "public/menu-art/fried-snacks.png",
+    "public/menu-art/indian-breads.png",
+    "public/menu-art/sweets.png",
+    "public/menu-art/chaat-pav.png",
+    "public/menu-art/farsan.png",
+    "public/menu-art/drinks-dessert.png",
   ]) assert.equal(await exists(path), true, `${path} should exist`);
 });
