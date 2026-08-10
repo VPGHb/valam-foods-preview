@@ -7,12 +7,13 @@ const read = (path) => readFile(new URL(path, root), "utf8");
 const exists = async (path) => access(new URL(path, root)).then(() => true, () => false);
 
 test("exports a fully static public website", async () => {
-  const [config, page, hosting, workflow, readme] = await Promise.all([
+  const [config, page, hosting, workflow, readme, exportedHome] = await Promise.all([
     read("next.config.ts"),
     read("app/page.tsx"),
     read(".openai/hosting.json"),
     read(".github/workflows/deploy-pages.yml"),
     read("README.md"),
+    read("dist/client/index.html"),
   ]);
   assert.match(config, /output:\s*"export"/);
   assert.match(config, /unoptimized:\s*true/);
@@ -26,6 +27,10 @@ test("exports a fully static public website", async () => {
   assert.match(workflow, /NEXT_PUBLIC_BASE_PATH:\s*\/valam-foods-preview/);
   assert.match(readme, /Open the latest live preview/);
   assert.match(readme, /vpghb\.github\.io\/valam-foods-preview/);
+  const stylesheet = exportedHome.match(/href=["'][^"']*\/_next\/static\/css\/([^"']+\.css)["']/)?.[1];
+  assert.ok(stylesheet, "the exported homepage should reference its stylesheet");
+  assert.equal(await exists(`dist/client/_next/static/css/${stylesheet}`), true, "the referenced stylesheet should be deployed");
+  assert.equal(await exists("dist/client/.nojekyll"), true, "GitHub Pages should preserve the _next asset directory");
 });
 
 test("gives every menu item an illustrated placeholder and keeps launch controls", async () => {
