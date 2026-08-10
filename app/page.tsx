@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { FacebookLogo, InstagramLogo, MapPin, Phone } from "@phosphor-icons/react/ssr";
 import { SITE_URL } from "@/lib/site-config";
+import { MenuItemImage } from "./menu-item-image";
 
 type MenuItem = {
   id?: string;
@@ -363,8 +364,11 @@ export default function Home() {
                     <article className="menu-item" key={item.id ?? `${section.id}-${item.name}`}>
                       <div className="menu-photo">
                         {/* Add approved food photos to public/ and set imageUrl to a local path such as /foods/samosa.jpg. */}
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={imageUrl} alt={isPlaceholder ? `Illustrated ${item.name} from VALAM FOODS in Iselin, NJ` : `${item.name} from VALAM FOODS in Iselin, NJ`} loading="lazy" />
+                        <MenuItemImage
+                          src={imageUrl}
+                          itemName={item.name}
+                          alt={isPlaceholder ? `Illustrated ${item.name} from VALAM FOODS in Iselin, NJ` : `${item.name} from VALAM FOODS in Iselin, NJ`}
+                        />
                       </div>
                       <div className="menu-item-body">
                         <div className="menu-item-heading"><strong>{item.name}</strong><b>{item.price}</b></div>

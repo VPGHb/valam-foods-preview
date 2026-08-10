@@ -22,8 +22,9 @@ test("exports a fully static public website", async () => {
 });
 
 test("gives every menu item an illustrated placeholder and keeps launch controls", async () => {
-  const [page, layout, css, siteConfig, robots, sitemap, llms] = await Promise.all([
+  const [page, menuImage, layout, css, siteConfig, robots, sitemap, llms] = await Promise.all([
     read("app/page.tsx"),
+    read("app/menu-item-image.tsx"),
     read("app/layout.tsx"),
     read("app/globals.css"),
     read("lib/site-config.ts"),
@@ -49,6 +50,10 @@ test("gives every menu item an illustrated placeholder and keeps launch controls
   assert.match(page, /Kaumudi Alur/);
   assert.match(page, /review-marquee/);
   assert.match(page, /Customer review carousel/);
+  assert.match(page, /MenuItemImage/);
+  assert.match(menuImage, /Photo coming soon/);
+  assert.match(menuImage, /onError/);
+  assert.match(menuImage, /onLoad/);
   assert.match(page, /out of 5 stars/);
   assert.match(page, /reviewRating/);
   assert.match(layout, /Indian Restaurant, Sweets & Snacks in Iselin, NJ/);
