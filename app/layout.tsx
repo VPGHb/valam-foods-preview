@@ -18,7 +18,17 @@ export const metadata: Metadata = {
     title: "VALAM FOODS | Indian Restaurant, Sweets & Snacks in Iselin, NJ",
     description: "Visit VALAM FOODS in Iselin, NJ for vegetarian Indian food, Gujarati snacks, traditional sweets, street food, tiffin, chai and catering near Edison and Woodbridge.",
     applicationName: "VALAM FOODS",
-    robots: { index: INDEXING_ENABLED, follow: INDEXING_ENABLED },
+    robots: {
+      index: INDEXING_ENABLED,
+      follow: INDEXING_ENABLED,
+      googleBot: {
+        index: INDEXING_ENABLED,
+        follow: INDEXING_ENABLED,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
     alternates: { canonical: "/" },
     openGraph: {
       title: "VALAM FOODS | Indian Restaurant, Sweets & Snacks in Iselin, NJ",
@@ -36,9 +46,9 @@ export const metadata: Metadata = {
       images: [`${SITE_URL}/og.png`],
     },
     icons: {
-      icon: `${SITE_URL}/valam-foods-logo.png`,
+      icon: [{ url: `${SITE_URL}/valam-foods-logo.png`, type: "image/png", sizes: "1254x1254" }],
       shortcut: `${SITE_URL}/valam-foods-logo.png`,
-      apple: `${SITE_URL}/valam-foods-logo.png`,
+      apple: [{ url: `${SITE_URL}/valam-foods-logo.png`, type: "image/png", sizes: "1254x1254" }],
     },
 };
 

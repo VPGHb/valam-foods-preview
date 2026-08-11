@@ -76,6 +76,8 @@ test("gives every menu item an illustrated placeholder and ships production SEO"
   assert.match(page, /out of 5 stars/);
   assert.match(page, /reviewRating/);
   assert.match(layout, /Indian Restaurant, Sweets & Snacks in Iselin, NJ/);
+  assert.match(layout, /"max-image-preview": "large"/);
+  assert.match(layout, /sizes: "1254x1254"/);
   assert.doesNotMatch(layout, /keywords:/);
   assert.match(llms, /Gujarati snacks/);
   assert.match(llms, /224 Correja Ave/);
@@ -93,6 +95,8 @@ test("gives every menu item an illustrated placeholder and ships production SEO"
   assert.doesNotMatch(sitemap, /chatgpt\.site|github\.io/);
   assert.match(sitemap, /https:\/\/valamfood\.com\//);
   assert.match(sitemap, /<changefreq>weekly<\/changefreq>/);
+  assert.match(sitemap, /schemas\/sitemap-image\/1\.1/);
+  assert.match(sitemap, /<image:loc>https:\/\/valamfood\.com\/og\.png<\/image:loc>/);
 });
 
 test("includes all static information pages", async () => {
