@@ -25,7 +25,7 @@ test("exports a fully static public website", async () => {
   assert.equal(await exists("db/menu.ts"), false);
   assert.match(workflow, /actions\/deploy-pages@v4/);
   assert.match(workflow, /NEXT_PUBLIC_BASE_PATH:\s*\/valam-foods-preview/);
-  assert.match(readme, /Open the latest live preview/);
+  assert.match(readme, /Open the production website/);
   assert.match(readme, /vpghb\.github\.io\/valam-foods-preview/);
   const stylesheet = exportedHome.match(/href=["'][^"']*\/_next\/static\/css\/([^"']+\.css)["']/)?.[1];
   assert.ok(stylesheet, "the exported homepage should reference its stylesheet");
@@ -33,7 +33,7 @@ test("exports a fully static public website", async () => {
   assert.equal(await exists("dist/client/.nojekyll"), true, "GitHub Pages should preserve the _next asset directory");
 });
 
-test("gives every menu item an illustrated placeholder and keeps launch controls", async () => {
+test("gives every menu item an illustrated placeholder and ships production SEO", async () => {
   const [page, menuImage, layout, css, siteConfig, robots, sitemap, llms] = await Promise.all([
     read("app/page.tsx"),
     read("app/menu-item-image.tsx"),
@@ -81,8 +81,13 @@ test("gives every menu item an illustrated placeholder and keeps launch controls
   assert.match(css, /@keyframes review-bob/);
   assert.match(css, /prefers-reduced-motion/);
   assert.doesNotMatch(css, /@import\s+["']tailwindcss["']/);
-  assert.match(siteConfig, /INDEXING_ENABLED = false/);
-  assert.match(robots, /Disallow:\s*\//);
+  assert.match(siteConfig, /SITE_URL = "https:\/\/valamfood\.com"/);
+  assert.match(siteConfig, /INDEXING_ENABLED = true/);
+  assert.match(robots, /Allow:\s*\//);
+  assert.match(robots, /https:\/\/valamfood\.com\/sitemap\.xml/);
+  assert.doesNotMatch(robots, /Disallow:\s*\//);
+  assert.doesNotMatch(sitemap, /chatgpt\.site|github\.io/);
+  assert.match(sitemap, /https:\/\/valamfood\.com\//);
   assert.match(sitemap, /<changefreq>weekly<\/changefreq>/);
 });
 

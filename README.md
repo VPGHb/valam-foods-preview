@@ -5,7 +5,7 @@ dashboard, database, login, server-side storage, or runtime secrets.
 
 ## Quick access
 
-- **[Open the latest live preview](https://valam-foods-iselin.shd65d9k5s.chatgpt.site/)**
+- **[Open the production website](https://valamfood.com/)**
 - **[Open the GitHub Pages preview](https://vpghb.github.io/valam-foods-preview/)**
 - [Check deployment progress](https://github.com/VPGHb/valam-foods-preview/actions)
 
