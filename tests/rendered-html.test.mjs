@@ -31,6 +31,10 @@ test("exports a fully static public website", async () => {
   assert.ok(stylesheet, "the exported homepage should reference its stylesheet");
   assert.equal(await exists(`dist/client/_next/static/css/${stylesheet}`), true, "the referenced stylesheet should be deployed");
   assert.equal(await exists("dist/client/.nojekyll"), true, "GitHub Pages should preserve the _next asset directory");
+  assert.equal((exportedHome.match(/<h1(?:\s|>)/g) || []).length, 1, "the homepage should expose exactly one h1");
+  assert.match(exportedHome, /\(732\) 808-7416/);
+  assert.match(exportedHome, /tel:\+17328087416/);
+  assert.doesNotMatch(exportedHome, /267-330-9984|12673309984/);
 });
 
 test("gives every menu item an illustrated placeholder and ships production SEO", async () => {

@@ -14,7 +14,7 @@ export default function Loading() {
           priority
         />
         <p className="eyebrow">VALAM FOODS · ISELIN, NJ</p>
-        <h1>Preparing the menu</h1>
+        <p className="loading-title">Preparing the menu</p>
         <div className="loading-track" aria-hidden="true"><span /></div>
         <p className="loading-note">Fresh flavors are just a moment away.</p>
       </div>

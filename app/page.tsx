@@ -176,7 +176,7 @@ const restaurantSchema = {
   url: SITE_URL,
   logo: `${SITE_URL}/valam-foods-logo.png`,
   image: [`${SITE_URL}/og.png`, `${SITE_URL}/hero-street-food-v2.png`, `${SITE_URL}/hero-paratha-chai-v2.png`],
-  telephone: "+1-267-330-9984",
+  telephone: "+1-732-808-7416",
   priceRange: "$",
   servesCuisine: ["Indian", "Gujarati", "Vegetarian", "Indian Street Food", "Indian Sweets"],
   menu: { "@id": `${SITE_URL}/#menu` },
@@ -291,7 +291,7 @@ export default function Home() {
             <a className="social-icon facebook" href="https://www.facebook.com/valamfoodsusa/" target="_blank" rel="noreferrer" aria-label="Follow VALAM FOODS on Facebook"><FacebookLogo size={23} weight="fill" aria-hidden="true" /></a>
             <a className="social-icon instagram" href="https://www.instagram.com/valamfoodsusa/" target="_blank" rel="noreferrer" aria-label="Follow VALAM FOODS on Instagram"><InstagramLogo size={23} weight="bold" aria-hidden="true" /></a>
           </div>
-          <a className="button button-small" href="tel:+12673309984">Call to order</a>
+          <a className="button button-small" href="tel:+17328087416">Call to order</a>
         </div>
       </header>
 
@@ -301,7 +301,7 @@ export default function Home() {
           <h1>Indian flavor.<br />Made close to home.</h1>
           <p className="hero-subtitle">Gujarati food, Indian street snacks, traditional sweets, tiffin and chai at 224 Correja Ave in Iselin.</p>
           <div className="hero-actions">
-            <a className="button" href="tel:+12673309984">Call to order</a>
+            <a className="button" href="tel:+17328087416">Call to order</a>
             <a className="text-link" href="#menu">Explore the menu <span aria-hidden="true">→</span></a>
           </div>
           <a className="rating-link" href="https://www.google.com/search?q=VALAM+FOODS+ISELIN+NJ" target="_blank" rel="noreferrer" aria-label="VALAM FOODS has a 4.6 out of 5 rating from 191 Google reviews">
@@ -388,7 +388,7 @@ export default function Home() {
         <div className="catering-copy">
           <h2>Bring Valam<br />to the whole table.</h2>
           <p>Party trays, sweets and Gujarati favorites for family gatherings, offices and celebrations.</p>
-          <a className="button button-light" href="tel:+12673309984">Ask about catering</a>
+          <a className="button button-light" href="tel:+17328087416">Ask about catering</a>
         </div>
         <div className="catering-prices">
           <div><span>Dal Vada</span><strong>Medium tray&nbsp; $84.99</strong></div>
@@ -500,7 +500,7 @@ export default function Home() {
           </nav>
         </div>
         <div className="footer-contact">
-          <a href="tel:+12673309984">+1 267-330-9984</a>
+          <a href="tel:+17328087416">(732) 808-7416</a>
           <a href="https://www.google.com/maps/dir/?api=1&destination=224+Correja+Ave,+Iselin,+NJ+08830" target="_blank" rel="noreferrer">224 Correja Ave, Iselin</a>
           <div className="footer-socials" aria-label="VALAM FOODS social media">
             <a className="social-icon facebook" href="https://www.facebook.com/valamfoodsusa/" target="_blank" rel="noreferrer" aria-label="VALAM FOODS on Facebook"><FacebookLogo size={22} weight="fill" aria-hidden="true" /></a>
@@ -511,7 +511,7 @@ export default function Home() {
       </footer>
 
       <div className="mobile-actions" aria-label="Quick actions">
-        <a href="tel:+12673309984"><Phone size={20} weight="fill" aria-hidden="true" /><span>Call</span></a>
+        <a href="tel:+17328087416"><Phone size={20} weight="fill" aria-hidden="true" /><span>Call</span></a>
         <a href="https://www.google.com/maps/dir/?api=1&destination=224+Correja+Ave,+Iselin,+NJ+08830" target="_blank" rel="noreferrer"><MapPin size={21} weight="fill" aria-hidden="true" /><span>Directions</span></a>
         <a href="#socials"><InstagramLogo size={22} weight="bold" aria-hidden="true" /><span>Follow us</span></a>
       </div>

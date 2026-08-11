@@ -17,7 +17,7 @@ export default function AccessibilityPage() {
       </section>
       <section>
         <h2>Need help?</h2>
-        <p>If you have difficulty using any part of the website, call +1 267-330-9984. Please describe the page, the information you need and the problem you encountered. We will make a reasonable effort to provide the information in another format.</p>
+        <p>If you have difficulty using any part of the website, call (732) 808-7416. Please describe the page, the information you need and the problem you encountered. We will make a reasonable effort to provide the information in another format.</p>
       </section>
       <section>
         <h2>Feedback</h2>

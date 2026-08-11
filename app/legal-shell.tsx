@@ -21,7 +21,7 @@ export function LegalShell({ title, intro, children }: { title: string; intro: s
       </article>
       <footer className="legal-footer">
         <strong>Questions?</strong>
-        <a href="tel:+12673309984">Call VALAM FOODS at +1 267-330-9984</a>
+        <a href="tel:+17328087416">Call VALAM FOODS at (732) 808-7416</a>
         <span>224 Correja Ave, Iselin, NJ 08830</span>
       </footer>
     </main>
