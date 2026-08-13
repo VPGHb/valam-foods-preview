@@ -22,11 +22,11 @@ export function MenuItemImage({ src, alt, itemName }: MenuItemImageProps) {
       <div
         className={`menu-photo-fallback ${status === "loaded" ? "is-hidden" : ""}`}
         role="img"
-        aria-label={`${itemName} photo unavailable. Photo coming soon.`}
+        aria-label={`${itemName} menu image unavailable.`}
         aria-hidden={status !== "unavailable"}
       >
         <span className="fallback-dish" aria-hidden="true"><i /></span>
-        <strong>{status === "checking" ? "Preparing photo" : "Photo coming soon"}</strong>
+        <strong>{status === "checking" ? "Loading image" : itemName}</strong>
         <small>VALAM FOODS</small>
       </div>
       {src && (

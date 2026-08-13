@@ -291,9 +291,6 @@ footer span { color: var(--muted); }
 .legal-links { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 10px; font-size: 0.86rem; font-weight: 850; }
 .legal-links a { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; }
 .legal-links a:hover { color: var(--orange-deep); text-decoration-color: currentColor; }
-.demo-notice { max-width: 1380px; margin: 0 auto; padding: 20px 5vw; border-top: 1px solid var(--line); display: flex; gap: 14px; align-items: baseline; }
-.demo-notice strong { flex: 0 0 auto; color: var(--orange-deep); }
-.demo-notice span { color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
 .mobile-actions { display: none; }
 
 .legal-page { min-height: 100dvh; }
@@ -495,8 +492,6 @@ footer span { color: var(--muted); }
   .loading-logo { width: 118px; height: 118px; }
   .loading-card .loading-title { font-size: clamp(2.9rem, 14vw, 4.2rem); }
   .loading-track { margin-top: 26px; }
-  .demo-notice { margin: 0 18px; padding: 18px 0; display: grid; gap: 5px; }
-  .demo-notice span { font-size: 0.82rem; }
   .mobile-actions { position: fixed; z-index: 30; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: 1fr 1fr 1fr; padding-bottom: env(safe-area-inset-bottom); background: var(--green-deep); box-shadow: 0 -8px 30px rgba(40, 86, 12, 0.18); }
   .mobile-actions a { min-height: 58px; display: flex; align-items: center; justify-content: center; gap: 6px; background: var(--green-deep); color: var(--paper); font-size: 0.78rem; font-weight: 950; }
   .mobile-actions a:nth-child(2) { background: var(--orange); color: #251106; }

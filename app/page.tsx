@@ -482,11 +482,6 @@ export default function Home() {
         </div>
       </section>
 
-      <aside className="demo-notice" aria-label="Demo website notice">
-        <strong>Demo website</strong>
-        <span>This preview is not yet the official VALAM FOODS website. The business must approve menu details, prices, policies and ordering information before public launch.</span>
-      </aside>
-
       <footer>
         <Image src={withBasePath("/valam-foods-logo.png")} alt="VALAM FOODS" width={170} height={170} />
         <div className="footer-brand">

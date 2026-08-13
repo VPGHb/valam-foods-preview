@@ -25,8 +25,10 @@ test("exports a fully static public website", async () => {
   assert.equal(await exists("db/menu.ts"), false);
   assert.match(workflow, /actions\/deploy-pages@v4/);
   assert.match(workflow, /NEXT_PUBLIC_BASE_PATH:\s*\/valam-foods-preview/);
+  assert.match(workflow, /NEXT_PUBLIC_DISABLE_INDEXING:\s*"true"/);
   assert.match(readme, /Open the production website/);
-  assert.match(readme, /vpghb\.github\.io\/valam-foods-preview/);
+  assert.match(readme, /official and canonical public website/);
+  assert.doesNotMatch(readme, /Open the GitHub Pages preview/);
   const stylesheet = exportedHome.match(/href=["'][^"']*\/_next\/static\/css\/([^"']+\.css)["']/)?.[1];
   assert.ok(stylesheet, "the exported homepage should reference its stylesheet");
   assert.equal(await exists(`dist/client/_next/static/css/${stylesheet}`), true, "the referenced stylesheet should be deployed");
@@ -35,9 +37,10 @@ test("exports a fully static public website", async () => {
   assert.match(exportedHome, /\(732\) 808-7416/);
   assert.match(exportedHome, /tel:\+17328087416/);
   assert.doesNotMatch(exportedHome, /267-330-9984|12673309984/);
+  assert.doesNotMatch(exportedHome, /Demo website|not yet the official|demonstration/i);
 });
 
-test("gives every menu item an illustrated placeholder and ships production SEO", async () => {
+test("gives every menu item an illustration and ships production SEO", async () => {
   const [page, menuImage, layout, css, siteConfig, robots, sitemap, llms] = await Promise.all([
     read("app/page.tsx"),
     read("app/menu-item-image.tsx"),
@@ -70,7 +73,8 @@ test("gives every menu item an illustrated placeholder and ships production SEO"
   assert.match(page, /Open larger map/);
   assert.match(page, /output=embed/);
   assert.match(page, /<iframe/);
-  assert.match(menuImage, /Photo coming soon/);
+  assert.match(menuImage, /menu image unavailable/);
+  assert.doesNotMatch(menuImage, /Photo coming soon/);
   assert.match(menuImage, /onError/);
   assert.match(menuImage, /onLoad/);
   assert.match(page, /out of 5 stars/);
@@ -88,7 +92,7 @@ test("gives every menu item an illustrated placeholder and ships production SEO"
   assert.match(css, /prefers-reduced-motion/);
   assert.doesNotMatch(css, /@import\s+["']tailwindcss["']/);
   assert.match(siteConfig, /SITE_URL = "https:\/\/valamfood\.com"/);
-  assert.match(siteConfig, /INDEXING_ENABLED = true/);
+  assert.match(siteConfig, /NEXT_PUBLIC_DISABLE_INDEXING !== "true"/);
   assert.match(robots, /Allow:\s*\//);
   assert.match(robots, /https:\/\/valamfood\.com\/sitemap\.xml/);
   assert.doesNotMatch(robots, /Disallow:\s*\//);

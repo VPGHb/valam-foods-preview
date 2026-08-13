@@ -1,30 +1,24 @@
-# VALAM FOODS static-site launch checklist
+# VALAM FOODS production checklist
 
-## 1. Approvals
+## 1. Business information
 
 - Confirm the menu, prices, quantities, hours, phone number, address, reviews,
   allergy notice, legal copy, and social links with the business.
-- Replace the demo notice once VALAM FOODS approves the website as official.
 - Add final food photos under `public/foods/` as they become available.
 
-## 2. Domain and deployment
+## 2. Domain and deployment (complete)
 
 - Create a GitHub repository owned by VALAM FOODS and keep a local clone.
-- Connect the repository to Cloudflare Pages and use `npm run build` with
-  `out` as the output folder.
-- Buy the domain in the business owner's name and enable automatic renewal.
-- Attach the custom domain and redirect `www` to the preferred address.
-- Update the domain in `lib/site-config.ts`, `public/robots.txt`, and
-  `public/sitemap.xml` to the final HTTPS domain.
+- The official domain is `https://valamfood.com` and Cloudflare deploys from
+  the `main` branch.
+- Keep automatic renewal, registrar lock, two-factor authentication and DNSSEC enabled.
+- Keep `www.valamfood.com` redirected to the canonical apex domain.
 
-## 3. Search launch
+## 3. Search operations
 
-- Keep `INDEXING_ENABLED` set to `false` until the business approves launch.
-- Change it to `true`, replace `Disallow: /` with `Allow: /` in
-  `public/robots.txt`, rebuild, and confirm `/robots.txt` allows crawling.
-- Verify the domain in Google Search Console and Bing Webmaster Tools using
-  their DNS records.
-- Submit `/sitemap.xml` to both webmaster tools.
+- Keep the production website indexable and the GitHub fallback copy `noindex`.
+- Keep the domain verified in Google Search Console and Bing Webmaster Tools.
+- Monitor `/sitemap.xml` in both webmaster tools after significant updates.
 - Add the final website and menu URL to the verified Google Business Profile.
 - Keep the same business name, address, phone, and hours everywhere online.
 - Test the Restaurant structured data with Google's Rich Results Test.

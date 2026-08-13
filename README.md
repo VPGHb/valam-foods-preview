@@ -6,11 +6,10 @@ dashboard, database, login, server-side storage, or runtime secrets.
 ## Quick access
 
 - **[Open the production website](https://valamfood.com/)**
-- **[Open the GitHub Pages preview](https://vpghb.github.io/valam-foods-preview/)**
 - [Check deployment progress](https://github.com/VPGHb/valam-foods-preview/actions)
 
-The live preview is available immediately. GitHub Pages updates automatically
-after the `Deploy VALAM FOODS to GitHub Pages` workflow finishes successfully.
+`https://valamfood.com` is the official and canonical public website. Cloudflare
+automatically deploys updates from the `main` branch.
 
 ## Local development
 
@@ -24,19 +23,15 @@ npm run dev
 ## Update the website
 
 - Edit menu items, prices, quantities, and descriptions in `app/page.tsx`.
-- Every menu item has its own clearly labeled illustration in
-  `public/menu-items/` until an approved dish photo is available.
+- Every menu item has its own illustration in `public/menu-items/`.
 - Add approved food photos under `public/foods/`, then set an item's `imageUrl`
   to a path such as `/foods/samosa.jpg` to replace its illustration.
-- Update the final domain and search-indexing launch switch in
-  `lib/site-config.ts`, `public/robots.txt`, and `public/sitemap.xml`.
 - Run `npm test` before publishing.
 
 ## Deploy
 
-`npm run build` creates the static site in `dist/client/`. Deploy that folder to
-Cloudflare Pages, GitHub Pages, Netlify, or any ordinary static web host.
+`npm run build` creates the static site in `dist/client/`. Cloudflare deploys
+that output to the official domain.
 
-The included GitHub Pages workflow rebuilds and publishes the website whenever
-`main` is updated. Git history and a local clone provide recovery without a
-separate backup service.
+The included GitHub Pages workflow maintains a non-indexable technical fallback.
+Git history and a local clone provide recovery without a separate backup service.

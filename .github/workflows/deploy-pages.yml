@@ -34,6 +34,7 @@ jobs:
         run: npm run build
         env:
           NEXT_PUBLIC_BASE_PATH: /valam-foods-preview
+          NEXT_PUBLIC_DISABLE_INDEXING: "true"
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

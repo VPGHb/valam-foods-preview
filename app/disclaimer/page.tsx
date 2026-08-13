@@ -12,10 +12,6 @@ export default function DisclaimerPage() {
   return (
     <LegalShell title="Website Disclaimers" intro="Please read these notices before relying on menu, dietary, review or third-party information shown on this website.">
       <section>
-        <h2>Demo status</h2>
-        <p>This website is currently a demonstration and is not yet the official VALAM FOODS website. Business details, policies and content must be reviewed and approved by VALAM FOODS before public launch.</p>
-      </section>
-      <section>
         <h2>Food and allergy information</h2>
         <p>Website descriptions are general information, not medical or nutritional advice. Ingredients and preparation methods can change, and cross-contact may occur. Tell staff about allergies before ordering. We cannot guarantee any item is allergen-free.</p>
       </section>
