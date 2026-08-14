@@ -346,8 +346,14 @@ export default function Home() {
           {menuSections.map((section) => <a key={section.id} href={`#${section.id}`}>{section.title}</a>)}
         </div>
         <aside className="food-notice" aria-labelledby="food-notice-title">
-          <strong id="food-notice-title">Food allergy notice</strong>
-          <p>Ingredients and preparation methods can change, and cross-contact may occur. Please tell staff about any allergy before ordering. We cannot guarantee that any item is allergen-free.</p>
+          <div>
+            <strong id="food-notice-title">Menu image notice</strong>
+            <p>Menu images are representative depictions for visual reference and may not exactly match the appearance, ingredients, portion or presentation of the food served.</p>
+          </div>
+          <div>
+            <strong>Food allergy notice</strong>
+            <p>Ingredients and preparation methods can change, and cross-contact may occur. Please tell staff about any allergy before ordering. We cannot guarantee that any item is allergen-free.</p>
+          </div>
         </aside>
         <div className="menu-groups">
           {menuSections.map((section, index) => (

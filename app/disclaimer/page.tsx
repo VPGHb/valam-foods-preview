@@ -17,7 +17,7 @@ export default function DisclaimerPage() {
       </section>
       <section>
         <h2>Menu and images</h2>
-        <p>Menu items, portions, prices, taxes, fees and availability may change. Food illustrations are representative and may not exactly match the item served. Call the restaurant to confirm current information.</p>
+        <p>Menu items, portions, prices, taxes, fees and availability may change. Menu images and illustrations are representative depictions for visual reference and may not exactly match the appearance, ingredients, portion or presentation of the food served. Call the restaurant to confirm current information.</p>
       </section>
       <section>
         <h2>Customer reviews</h2>

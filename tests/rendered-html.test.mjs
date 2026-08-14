@@ -38,6 +38,7 @@ test("exports a fully static public website", async () => {
   assert.match(exportedHome, /tel:\+17328087416/);
   assert.doesNotMatch(exportedHome, /267-330-9984|12673309984/);
   assert.doesNotMatch(exportedHome, /Demo website|not yet the official|demonstration/i);
+  assert.match(exportedHome, /Menu images are representative depictions for visual reference/);
 });
 
 test("gives every menu item an illustration and ships production SEO", async () => {
@@ -78,6 +79,7 @@ test("gives every menu item an illustration and ships production SEO", async () 
   assert.match(menuImage, /onError/);
   assert.match(menuImage, /onLoad/);
   assert.match(page, /out of 5 stars/);
+  assert.match(page, /may not exactly match the appearance, ingredients, portion or presentation/);
   assert.match(page, /reviewRating/);
   assert.match(layout, /Indian Restaurant, Sweets & Snacks in Iselin, NJ/);
   assert.match(layout, /"max-image-preview": "large"/);

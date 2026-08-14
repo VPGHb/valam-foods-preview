@@ -168,7 +168,7 @@ h1 { max-width: 690px; font-size: clamp(4.2rem, 7vw, 7.4rem); text-transform: up
 .menu-jump::-webkit-scrollbar { display: none; }
 .menu-jump a { flex: 0 0 auto; padding: 10px 16px; border: 1px solid var(--green); border-radius: 999px; color: var(--green-deep); font-size: 0.9rem; font-weight: 900; }
 .menu-jump a:hover, .menu-jump a:focus-visible { background: var(--green-deep); color: white; }
-.food-notice { margin: 0 0 24px; padding: 20px 22px; border: 2px solid var(--orange); border-radius: 18px; background: var(--surface); }
+.food-notice { margin: 0 0 24px; padding: 20px 22px; border: 2px solid var(--orange); border-radius: 18px; background: var(--surface); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 30px; }
 .food-notice strong { color: var(--orange-deep); font-size: 1rem; }
 .food-notice p { max-width: 900px; margin: 6px 0 0; color: var(--muted); line-height: 1.55; }
 .menu-groups { display: grid; gap: 16px; }
@@ -391,7 +391,7 @@ footer span { color: var(--muted); }
   .section-heading p, .review-intro > p:not(.eyebrow), .visit-copy > p { font-size: 0.98rem; line-height: 1.5; }
   .menu-jump { margin: 0 -16px 18px; padding: 0 16px 6px; }
   .menu-jump a { min-height: 44px; padding: 0 15px; display: inline-flex; align-items: center; font-size: 0.84rem; }
-  .food-notice { margin-bottom: 18px; padding: 16px; border-width: 1px; border-radius: 16px; }
+  .food-notice { margin-bottom: 18px; padding: 16px; border-width: 1px; border-radius: 16px; grid-template-columns: 1fr; gap: 14px; }
   .food-notice p { font-size: 0.88rem; line-height: 1.45; }
   .menu-groups { gap: 12px; }
   .menu-group { scroll-margin-top: 68px; border-radius: 20px; }
